@@ -1,232 +1,171 @@
-*{
+* {
+	box-sizing: border-box;
 
-
-
- box-sizing: border-box;
-
-margin:0;
-padding:0;
-
-
+	margin: 0;
+	padding: 0;
 }
 
+body {
+	font-size: 10px;
 
-body{
-
-  font-size: 10px;
-    
-    margin: 0;
-    padding:0;
-    height: 100%;
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
 html {
-    margin: 0;
-    height: 100%;
+	margin: 0;
+	height: 100%;
 }
 @viewport {
-  width: 100%; /*Sets the width of the actual viewport to the device width*/
+	width: 100%; /*Sets the width of the actual viewport to the device width*/
 }
-
-
 
 .root {
+	margin: 0 auto;
 
- 
- margin:0 auto;
-
- 
-  width:80%
-
+	width: 80%;
 }
 
+.header {
+	color: blue;
 
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
+	text-align: center;
 
-.header{ 
+	background-color: rgb(161, 138, 129);
 
-color:blue;
+	padding: 10px;
 
+	font-family: 'Luckiest Guy', cursive;
 
-display:flex;
-align-items: center;
-justify-content: center;
+	animation: pulse 5s infinite;
 
-text-align: center;
-
-background-color: rgb(161, 138, 129);
-
-padding:10px;
-
-font-family: 'Luckiest Guy', cursive;
-
-animation: pulse 5s infinite;
-
-font-size: 3em;
-width:100%
+	font-size: 3em;
+	width: 100%;
 }
 
+.footer {
+	color: blue;
 
-.footer{color:blue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
+	text-align: center;
 
-display:flex;
-align-items: center;
-justify-content: center;
+	background-color: rgb(161, 138, 129);
 
-text-align: center;
+	padding: 10px;
 
-background-color: rgb(161, 138, 129);
+	font-family: 'Luckiest Guy', cursive;
 
-padding:10px;
+	animation: pulse 5s infinite;
 
-font-family: 'Luckiest Guy', cursive;
-
-animation: pulse 5s infinite;
-
-font-size: 3em;
-
+	font-size: 3em;
 }
-
 
 @keyframes pulse {
+	0% {
+		background-color: #94b1ce;
 
-  0% {
+		color: rgb(230, 72, 9);
+	}
 
-    background-color: #94b1ce;
+	100% {
+		color: rgb(18, 49, 143);
 
-    color:rgb(230, 72, 9)
-
-  }
-
-  100% {
-
-    color:rgb(18, 49, 143);
-
-    background-color: #6d5251;
-
-  }
-
+		background-color: #6d5251;
+	}
 }
 
-.main{
-  display:grid;
-  grid-auto-rows:auto ;
-  grid-template-rows: auto;
-  grid-row-gap: 10px;
+.main {
+	display: grid;
+	grid-auto-rows: auto;
+	grid-template-rows: auto;
+	grid-row-gap: 10px;
 
-  color:rgb(8, 0, 0);
+	color: rgb(8, 0, 0);
 
-margin: 0 auto;
-justify-content:center;
+	margin: 0 auto;
+	justify-content: center;
 
-font-size: 10px;
-  padding:10px;
-
-
-
-
-} 
+	font-size: 10px;
+	padding: 10px;
+}
 
 /* showstyles*/
 
-.showStyles{
+.showStyles {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	align-content: center;
+	justify-content: flex-start;
 
-display:flex;
-align-items: center;
-flex-direction: column;
-align-content: center;
-justify-content: flex-start;
- 
-border: 5px solid rgba(90, 80, 80, 0.115) ;
-border-radius: 10px;
+	border: 5px solid rgba(90, 80, 80, 0.115);
+	border-radius: 10px;
 
-
-flex-wrap: wrap;
-font-size: 10px;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	flex-wrap: wrap;
+	font-size: 10px;
 }
-img{
-height:100%;
-width:100%;
-object-fit: cover;
+img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
-.showStyles > h2{border: 5px solid black;
-border-radius:20px;
-display: flex;
+.showStyles > h2 {
+	border: 5px solid black;
+	border-radius: 20px;
+	display: flex;
 
-justify-content: center;
-text-align: center;
-width:100%; }
-.showItem{
-
-  display:flex;
-flex-wrap: wrap;
-  align-items: flex-start;
-
-  justify-content: flex-start;
-
-  text-align: center;
-
-  padding: 20px;
-
-  margin:0 auto;
-
-  font-size: 1rem;
-
+	justify-content: center;
+	text-align: center;
+	width: 100%;
 }
+.showItem {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 
+	justify-content: flex-start;
 
+	text-align: center;
 
+	padding: 20px;
+
+	margin: 0 auto;
+
+	font-size: 1rem;
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 
 /* Medium devices (landscape tablets, 768px and up) */
 
-@media only screen and (min-width:678px){
-*{
+@media only screen and (min-width: 678px) {
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	.main {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(auto-fill, 30%);
 
-  margin:0;
-  padding:0;
+		width: 100%;
+		grid-gap: 10px;
+		font-size: 6px;
+		color: black;
+	}
+
+	.root {
+		margin: 0 auto;
+	}
+
+	body {
+		margin: 0 auto;
+	}
 }
-  .main
-
-  {
-    display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
- grid-template-columns: repeat(auto-fill, 30%);
- 
-width:100%;
-  grid-gap: 10px;
-font-size:6px;
-  color:black;
-  
-
-} 
-
-.root{
- 
-
-  margin:0 auto;
- 
-
-}
-
-
-body{
-margin:0 auto;
-}
-
-} 

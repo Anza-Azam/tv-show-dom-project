@@ -2,11 +2,20 @@
 function setup() {
 	const allEpisodes = getAllEpisodes();
 	makePageForEpisodes(allEpisodes);
-	let rootElem = document.getElementById('root');
+  
+	let rootElem = document.createElement('div');
+  rootElem.classList.add('root')
 	let header = document.createElement('header');
+  document.body.appendChild(header);
+  document.body.appendChild(rootElem);
 	header.classList.add('header');
-	header.innerText = 'TV Shows';
-	rootElem.appendChild(header);
+
+	
+    let heading=document.createElement('h1')
+ 
+	heading.innerText = 'TV Shows';
+
+  header.append(heading);
   let main= document.createElement('main')
   main.classList.add('main');
   rootElem.appendChild(main)

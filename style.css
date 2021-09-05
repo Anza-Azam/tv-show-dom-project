@@ -53,6 +53,26 @@ font-size: 3em;
 }
 
 
+.footer{color:blue;
+
+
+display:flex;
+align-items: center;
+justify-content: center;
+
+text-align: center;
+
+background-color: rgb(161, 138, 129);
+
+padding:10px;
+
+font-family: 'Luckiest Guy', cursive;
+
+animation: pulse 5s infinite;
+
+font-size: 3em;
+
+}
 
 
 @keyframes pulse {

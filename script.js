@@ -38,7 +38,12 @@ function setup() {
 
 });
   
-
+let footer= document.createElement('footer')
+footer.classList.add('footer')
+let site= document.createElement('p')
+site.innerText="@copyright TVMaze.com"
+document.body.appendChild(footer)
+footer.appendChild(site)
 }
 
 function makePageForEpisodes(episodeList) {

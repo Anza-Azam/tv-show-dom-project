@@ -22,6 +22,7 @@ function setup() {
   allEpisodes.forEach(shows=>{ const show=document.createElement('div');
   show.classList.add('showStyles')
   const showHeading=document.createElement('h2')
+  const imgDiv=document.createElement('div')
   const showImage=document.createElement('img')
   const showDescription=document.createElement('p')
   showHeading.classList.add('showItem')
@@ -29,8 +30,9 @@ function setup() {
   showDescription.classList.add('showItem')
   showHeading.innerText= `${shows.name}-${shows.season.toString().padStart(3,"S0")}${shows.number.toString().padStart(3,"E0")}`
   showImage.src = shows.image.medium
+  imgDiv.appendChild(showImage)
   showDescription.innerText=shows.summary.substring(3,shows.summary.length-4)
-  show.append(showHeading,showImage,showDescription)
+  show.append(showHeading,imgDiv,showDescription)
   main.append(show)
 
   main.appendChild(show)

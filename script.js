@@ -25,7 +25,7 @@ function setup() {
     let site = document.createElement('p');
     site.innerText = '@copyright';
     let link=document.createElement('a')
-    link.href='tvmaze.com/api#licensing'
+    link.href='https://www.tvmaze.com/api#licensing'
     link.target='_blank'
     link.innerText= 'TVMaze.com'
     

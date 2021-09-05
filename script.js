@@ -27,7 +27,7 @@ function setup() {
   showHeading.classList.add('showItem')
   showImage.classList.add('showItem')
   showDescription.classList.add('showItem')
-  showHeading.innerText= `${shows.name}-${shows.season}${shows.number}`
+  showHeading.innerText= `${shows.name}-${shows.season.toString().padStart(3,"S0")}${shows.number.toString().padStart(3,"E0")}`
   showImage.src = shows.image.medium
   showDescription.innerText=shows.summary.substring(3,shows.summary.length-4)
   show.append(showHeading,showImage,showDescription)

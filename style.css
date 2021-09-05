@@ -19,7 +19,7 @@ html {
 @viewport {
 	width: 100%; /*Sets the width of the actual viewport to the device width*/
 }
-
+a{padding-left: 10px;}
 .root {
 	margin: 0 auto;
 

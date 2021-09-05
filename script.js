@@ -23,9 +23,15 @@ function setup() {
     let footer = document.createElement('footer');
     footer.classList.add('footer');
     let site = document.createElement('p');
-    site.innerText = '@copyright TVMaze.com';
+    site.innerText = '@copyright';
+    let link=document.createElement('a')
+    link.href='tvmaze.com/api#licensing'
+    link.target='_blank'
+    link.innerText= 'TVMaze.com'
+    
     document.body.appendChild(footer);
     footer.appendChild(site);
+    footer.appendChild(link)
 }
 
 function makePageForEpisodes(episodeList) {

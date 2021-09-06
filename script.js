@@ -18,8 +18,9 @@ function setup() {
     let main = document.createElement('main');
     main.classList.add('main');
     rootElem.appendChild(main);
-    allEpisodes.forEach((shows) => { const show = document.createElement('div'); show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show); });
 
+    allEpisodes.forEach(displayShows);
+    
     let footer = document.createElement('footer');
     footer.classList.add('footer');
     let site = document.createElement('p');
@@ -32,6 +33,11 @@ function setup() {
     document.body.appendChild(footer);
     footer.appendChild(site);
     footer.appendChild(link)
+
+    function displayShows(shows)
+{ const show = document.createElement('div');
+     show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show); }
+
 }
 
 function makePageForEpisodes(episodeList) {

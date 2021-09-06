@@ -11,11 +11,30 @@ function setup() {
     const displayNumbers=document.createElement('p')
     const search=document.createElement('input');
     search.type='text'
-    displayNumbers.innerText='hi';
+    search.placeholder='Enter key word'
+   
     searchContainer.classList.add('inputs')
     searchContainer.append(search,displayNumbers)
 
     document.body.appendChild(searchContainer)
+           search.addEventListener('input',()=>{
+               let timeout;
+clearTimeout(timeout);
+    timeout = setTimeout(() => {
+       
+        displayNumbers.innerText=search.value;
+
+let filtered=allEpisodes.filter((episode) =>
+    {
+        if (episode.summary.toLowerCase().includes(search.value)||episode.name.toLowerCase().includes(search.value)){
+console.log(episode);
+            return episode;
+        }
+
+           });
+           filtered.forEach(displayShows)
+
+    }, 1000);})
 
     document.body.appendChild(rootElem);
     header.classList.add('header');

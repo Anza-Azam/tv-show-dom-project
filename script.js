@@ -7,6 +7,16 @@ function setup() {
     rootElem.classList.add('root');
     let header = document.createElement('header');
     document.body.appendChild(header);
+    const searchContainer= document.createElement('div')
+    const displayNumbers=document.createElement('p')
+    const search=document.createElement('input');
+    search.type='text'
+    displayNumbers.innerText='hi';
+    searchContainer.classList.add('inputs')
+    searchContainer.append(search,displayNumbers)
+
+    document.body.appendChild(searchContainer)
+
     document.body.appendChild(rootElem);
     header.classList.add('header');
 

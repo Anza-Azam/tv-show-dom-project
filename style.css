@@ -46,7 +46,17 @@ a{padding-left: 10px;}
 	font-size: 3em;
 	width: 100%;
 }
-
+.inputs{
+	display:flex;
+ justify-content: center;
+font-size: 2rem;
+	/* align-items: center;
+	text-align: center; */
+	margin:auto;
+}
+.inputs > p{ padding-left:20px;
+	
+}
 .footer {
 	color: blue;
 

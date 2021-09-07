@@ -17,25 +17,7 @@ function setup() {
     searchContainer.append(search,displayNumbers)
 
     document.body.appendChild(searchContainer)
-           search.addEventListener('input',()=>{
-               let timeout;
-clearTimeout(timeout);
-    timeout = setTimeout(() => {
-       
-        displayNumbers.innerText=search.value;
-
-let filtered=allEpisodes.filter((episode) =>
-    {
-        if (episode.summary.toLowerCase().includes(search.value)||episode.name.toLowerCase().includes(search.value)){
-console.log(episode);
-            return episode;
-        }
-
-           });
-           filtered.forEach(displayShows)
-
-    }, 1000);})
-
+        
     document.body.appendChild(rootElem);
     header.classList.add('header');
 
@@ -62,10 +44,31 @@ console.log(episode);
     document.body.appendChild(footer);
     footer.appendChild(site);
     footer.appendChild(link)
+   search.addEventListener('input',()=>{
+               let timeout;
+clearTimeout(timeout);
+    timeout = setTimeout(() => {
+       
+      
+
+let filtered=allEpisodes.filter((episode) =>
+    {
+        if (episode.summary.toLowerCase().includes(search.value)||episode.name.toLowerCase().includes(search.value)){
+console.log(episode);
+            return episode;
+        }
+
+           });
+           filtered.forEach(displayShows)
+             displayNumbers.innerText=`Displaying ${filtered.length}/${allEpisodes.length} Episodes`;
+  //displayNumbers.innerText=search.value;
+    }, 1000);})
 
     function displayShows(shows)
 { const show = document.createElement('div');
      show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show); }
+
+
 
 }
 

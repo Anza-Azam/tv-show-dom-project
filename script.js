@@ -27,10 +27,11 @@ function setup() {
 
     header.append(heading);
     let main = document.createElement('main');
+    let mains= document.createElement('main');
     main.classList.add('main');
     rootElem.appendChild(main);
 
-    allEpisodes.forEach(displayShows);
+   
     
     let footer = document.createElement('footer');
     footer.classList.add('footer');
@@ -40,30 +41,53 @@ function setup() {
     link.href='https://www.tvmaze.com/api#licensing'
     link.target='_blank'
     link.innerText= 'TVMaze.com'
-    
+    let filtered=[];
+   function removeAll() {
+  while (rootElem.firstChild) {
+  rootElem.firstChild.remove();     
+}
+} 
     document.body.appendChild(footer);
     footer.appendChild(site);
     footer.appendChild(link)
+     allEpisodes.forEach(displayShows);
    search.addEventListener('input',()=>{
                let timeout;
 clearTimeout(timeout);
     timeout = setTimeout(() => {
-       
-      
+       removeAll();
+   // RootElem.querySelectorAll('*').forEach( n => n.remove() );
 
-let filtered=allEpisodes.filter((episode) =>
+filtered = allEpisodes.filter((episode) =>
     {
         if (episode.summary.toLowerCase().includes(search.value)||episode.name.toLowerCase().includes(search.value)){
-console.log(episode);
+//console.log(episode);
             return episode;
         }
-
            });
-           filtered.forEach(displayShows)
-             displayNumbers.innerText=`Displaying ${filtered.length}/${allEpisodes.length} Episodes`;
-  //displayNumbers.innerText=search.value;
-    }, 1000);})
 
+
+
+let arr=filtered.slice();
+ console.log(arr.length)
+// filtered.forEach(elem=>console.log(elem))
+             displayNumbers.innerText=`Displaying ${arr.length}/${allEpisodes.length} Episodes`;
+           
+
+
+arr.forEach(shows =>{ const show = document.createElement('div');
+     show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); mains.append(show);rootElem.appendChild(mains) }
+);
+//rootElem.appendChild(main)
+           // rootElem.appendChild(main)
+  //displayNumbers.innerText=search.value;
+    }, 1000);
+ 
+})
+
+
+// function displayShow(){
+//     console.log('hi')}
     function displayShows(shows)
 { const show = document.createElement('div');
      show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show); }
@@ -71,6 +95,11 @@ console.log(episode);
 
 
 }
+ 
+
+
+
+
 
 function makePageForEpisodes(episodeList) {
     ;

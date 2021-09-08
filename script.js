@@ -70,7 +70,7 @@ function setup() {
 search.addEventListener('keyup',()=>{
 
    timeout= setInterval(()=>{
-
+clearInterval(timeout)
 let i=0,j=0;
      const lists = document.querySelector('.main')
 

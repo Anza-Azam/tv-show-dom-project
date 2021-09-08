@@ -41,6 +41,7 @@ select.appendChild(option)
  select.classList.add('selection')
  selectContainer.classList.add('select')
  selectContainer.appendChild(select)
+ 
 document.body.appendChild(selectContainer)
     
 
@@ -59,10 +60,16 @@ Array.from(itemsfrom).forEach(elem=>{
   {
  
 elem.firstElementChild.style.backgroundColor = "red";
+elem.firstElementChild.id=e.target.value
 }
 else {elem.firstElementChild.removeAttribute('style');}
 })
  
+const a = document.createElement('a')
+a.href=`#${e.target.value}`;
+selectContainer.appendChild(a);
+a.style.visibility='hidden';
+a.click();
     })
  // const result = document.querySelector('.result');
  

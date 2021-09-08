@@ -55,28 +55,35 @@ function setup() {
     footer.appendChild(link)
     let arr=[]
      allEpisodes.forEach(displayShows);
-   
-search.addEventListener('keyup',function(e)
-{
+   let timeout;
+search.addEventListener('keyup',()=>{
 
+   timeout= setTimeout(()=>{
+
+let i=0;
      const lists = document.querySelector('.main')
 
-const term=e.target.value.toLowerCase();
+const term=search.value.toLowerCase();
 const itemsfrom = lists.getElementsByClassName('showStyles')
 
 
 
 //console.log(itemsfrom)
 Array.from(itemsfrom).forEach(elem=>{
-    if(term.length===0){elem.style.display='flex'}
+    if(term.length===0){elem.style.display='flex'
+ displayNumbers.innerText=allEpisodes.length
+}
 else
     if(!elem.firstElementChild.textContent.toLowerCase().includes(term)&&(!elem.lastElementChild.textContent.toLowerCase().includes(term))) 
     {elem.style.display='none'}
-    else{}
-})
+    else{
+        i+=1; displayNumbers.innerText=i
+    }
 })
 
+},500)
 
+})
     function displayShows(shows)
 { const show = document.createElement('div');
      show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show); }

@@ -28,7 +28,19 @@ function setup() {
     searchContainer.append(search,displayNumbers)
 
     document.body.appendChild(searchContainer)
-        
+    
+    const select=document.createElement('select')
+    
+
+allEpisodes.forEach(episode=>{const option=document.createElement('option')
+option.value=episode.name;
+option.innerText=`${episode.name}-${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')}`;
+select.appendChild(option)
+})    
+ const selectContainer= document.createElement('div')
+ selectContainer.classList.add('select')
+ selectContainer.appendChild(select)
+document.body.appendChild(selectContainer)
     document.body.appendChild(rootElem);
     header.classList.add('header');
 
@@ -56,7 +68,7 @@ function setup() {
     let filtered=[];
      const parent = document.querySelector(".root")
     
-    
+
 
  
     document.body.appendChild(footer);

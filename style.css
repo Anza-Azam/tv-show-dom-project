@@ -105,9 +105,13 @@ font-size: 2rem;
 	font-size: 10px;
 	padding: 10px;
 }
-
+.inputs >p{font-size:1rem;}
 /* showstyles*/
+.select{
+	display:flex;
+	justify-content:center;
 
+}
 .showStyles {
 	display: flex;
 	align-items: center;

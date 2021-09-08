@@ -58,16 +58,13 @@ function setup() {
    let timeout;
 search.addEventListener('keyup',()=>{
 
-   timeout= setTimeout(()=>{
+   timeout= setInterval(()=>{
 
 let i=0;
      const lists = document.querySelector('.main')
 
 const term=search.value.toLowerCase();
 const itemsfrom = lists.getElementsByClassName('showStyles')
-
-
-
 //console.log(itemsfrom)
 Array.from(itemsfrom).forEach(elem=>{
     if(term.length===0){elem.style.display='flex'
@@ -77,6 +74,7 @@ else
     if(!elem.firstElementChild.textContent.toLowerCase().includes(term)&&(!elem.lastElementChild.textContent.toLowerCase().includes(term))) 
     {elem.style.display='none'}
     else{
+        elem.style.display='flex'
         i+=1; displayNumbers.innerText=i
     }
 })

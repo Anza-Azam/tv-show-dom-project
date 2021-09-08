@@ -33,15 +33,57 @@ function setup() {
     
 
 allEpisodes.forEach(episode=>{const option=document.createElement('option')
-option.value=episode.name;
+option.value=`${episode.name}-${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')}`;
 option.innerText=`${episode.name}-${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')}`;
 select.appendChild(option)
 })    
  const selectContainer= document.createElement('div')
+ select.classList.add('selection')
  selectContainer.classList.add('select')
  selectContainer.appendChild(select)
 document.body.appendChild(selectContainer)
-    document.body.appendChild(rootElem);
+    
+
+////////////////////////////////////////////////////////////////////////
+const selectElement = document.querySelector('.selection');
+
+selectElement.addEventListener('click', (e) => 
+{
+
+        clearInterval(timeout)
+         const lists = document.querySelector('.main')
+const itemsfrom = lists.getElementsByClassName('showStyles')
+//console.log(itemsfrom)
+Array.from(itemsfrom).forEach(elem=>{
+  if(elem.firstElementChild.textContent===e.target.value)
+  {
+ 
+elem.firstElementChild.style.backgroundColor = "red";
+}
+else {elem.firstElementChild.removeAttribute('style');}
+})
+ 
+    })
+ // const result = document.querySelector('.result');
+ 
+
+
+
+
+////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+document.body.appendChild(rootElem);
     header.classList.add('header');
 
     let heading = document.createElement('h1');
@@ -56,6 +98,11 @@ document.body.appendChild(selectContainer)
     rootElem.appendChild(main);
 
    
+
+
+
+
+
     
     let footer = document.createElement('footer');
     footer.classList.add('footer');

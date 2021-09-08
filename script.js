@@ -60,7 +60,7 @@ search.addEventListener('keyup',()=>{
 
    timeout= setInterval(()=>{
 
-let i=0;
+let i=0,j=0;
      const lists = document.querySelector('.main')
 
 const term=search.value.toLowerCase();
@@ -68,20 +68,31 @@ const itemsfrom = lists.getElementsByClassName('showStyles')
 //console.log(itemsfrom)
 Array.from(itemsfrom).forEach(elem=>{
     if(term.length===0){elem.style.display='flex'
- displayNumbers.innerText=allEpisodes.length
+ displayNumbers.innerText=`Displaying ${allEpisodes.length} / ${allEpisodes.length} results`
 }
 else
     if(!elem.firstElementChild.textContent.toLowerCase().includes(term)&&(!elem.lastElementChild.textContent.toLowerCase().includes(term))) 
-    {elem.style.display='none'}
+    {elem.style.display='none'
+    
+}
     else{
         elem.style.display='flex'
-        i+=1; displayNumbers.innerText=i
+        i+=1; displayNumbers.innerText=`Displaying ${i} / ${allEpisodes.length} results`
     }
 })
+let total=[]
+Array.from(itemsfrom).forEach(elem=>{
+    if(elem.style.display==='none')
+    total.push(true)
+    else total.push(false)})
+    if (total.every(elem=>elem===true))
+ displayNumbers.innerText=`Displaying ${j} / ${allEpisodes.length} results`
+
 
 },500)
 
 })
+
     function displayShows(shows)
 { const show = document.createElement('div');
      show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show); }

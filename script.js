@@ -1,7 +1,18 @@
 // You can edit ALL of the code here
 function setup() {
     const allEpisodes = getAllEpisodes();
-    makePageForEpisodes(allEpisodes);
+   displayShows(allEpisodes)
+
+}
+
+
+
+   function displayShows(allEpisodes)
+
+//function makePageForEpisodes(episodeList)
+ {
+    
+
 
     let rootElem = document.createElement('div');
     rootElem.classList.add('root');
@@ -54,7 +65,7 @@ function setup() {
     
     footer.appendChild(link)
     let arr=[]
-     allEpisodes.forEach(displayShows);
+     allEpisodes.forEach(makePageForEpisodes);
    let timeout;
 search.addEventListener('keyup',()=>{
 
@@ -93,21 +104,14 @@ Array.from(itemsfrom).forEach(elem=>{
 
 })
 
-    function displayShows(shows)
+function makePageForEpisodes(episodeList)
 { const show = document.createElement('div');
-     show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${shows.name}-${shows.season .toString() .padStart(3, 'S0')}${shows.number.toString().padStart(3, 'E0')}`; showImage.src = shows.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = shows.summary.substring(3, shows.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show); }
+     show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${episodeList.name}-${episodeList.season.toString().padStart(3, 'S0')}${episodeList.number.toString().padStart(3, 'E0')}`; showImage.src = episodeList.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = episodeList.summary.substring(3, episodeList.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show);
+     }
 
 
 
 
-}
-
-
-
-
-
-function makePageForEpisodes(episodeList) {
-    ;
     // const rootElem = document.getElementById("root");
     // rootElem.textContent = `Got ${episodeList.length} episode(s)`;
 }

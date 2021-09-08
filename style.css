@@ -151,6 +151,38 @@ img {
 	font-size: 1rem;
 }
 
+
+.showItemd {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+
+	justify-content: flex-start;
+
+	text-align: center;
+
+	padding: 20px;
+
+	margin: 0 auto;
+
+	font-size: 1rem;
+}
+
+.showItemimg {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+
+	justify-content: flex-start;
+
+	text-align: center;
+
+	padding: 20px;
+
+	margin: 0 auto;
+
+	font-size: 1rem;
+}
 /* Large devices (laptops/desktops, 992px and up) */
 
 /* Medium devices (landscape tablets, 768px and up) */

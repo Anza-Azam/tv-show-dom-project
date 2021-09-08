@@ -44,15 +44,14 @@ function setup() {
     link.innerText= 'TVMaze.com'
     let filtered=[];
      const parent = document.querySelector(".root")
-    function removeAll(){
-    while (parent.firstChild) {
-    parent.firstChild.remove()
-}
     
-}
+    
+
  
     document.body.appendChild(footer);
     footer.appendChild(site);
+
+    
     footer.appendChild(link)
     let arr=[]
      allEpisodes.forEach(displayShows);
@@ -64,15 +63,18 @@ search.addEventListener('keyup',function(e)
 
 const term=e.target.value.toLowerCase();
 const itemsfrom = lists.getElementsByClassName('showStyles')
+
+
+
 //console.log(itemsfrom)
-Array.from(itemsfrom).forEach(elem=>{ if(!elem.firstElementChild.textContent.toLowerCase().includes(term)&&(!elem.lastElementChild.textContent.toLowerCase().includes(term))) 
+Array.from(itemsfrom).forEach(elem=>{
+    if(term.length===0){elem.style.display='flex'}
+else
+    if(!elem.firstElementChild.textContent.toLowerCase().includes(term)&&(!elem.lastElementChild.textContent.toLowerCase().includes(term))) 
     {elem.style.display='none'}
-}
-
-)
+    else{}
 })
-
-
+})
 
 
     function displayShows(shows)
@@ -81,8 +83,8 @@ Array.from(itemsfrom).forEach(elem=>{ if(!elem.firstElementChild.textContent.toL
 
 
 
+
 }
- 
 
 
 

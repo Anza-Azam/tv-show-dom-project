@@ -90,7 +90,17 @@ font-size: 2rem;
 		background-color: #6d5251;
 	}
 }
+.button{
 
+	padding: 10px;
+	margin-left:10px;
+	
+	
+	background-color: burlywood;
+	color:'red';
+
+
+}
 .main {
 	display: grid;
 	grid-auto-rows: auto;

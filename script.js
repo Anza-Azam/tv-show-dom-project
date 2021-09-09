@@ -31,16 +31,18 @@ function setup() {
     
     const select=document.createElement('select')
     const button=document.createElement('button')
+    button.innerText = ("Show all Episodes")
 
 allEpisodes.forEach(episode=>{const option=document.createElement('option')
-option.value=`${episode.name}-${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')}`;
-option.innerText=`${episode.name}-${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')}`;
+option.value=`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`;
+option.innerText=`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`;
 select.appendChild(option)
 })    
  const selectContainer= document.createElement('div')
  select.classList.add('selection')
  selectContainer.classList.add('select') 
  button.style.display='none'
+ button.classList.add('button')
  selectContainer.append(select,button)
  
 document.body.appendChild(selectContainer)
@@ -52,11 +54,19 @@ const selectElement = document.querySelector('.selection');
 selectElement.addEventListener('click', (e) => 
 {
     search.removeEventListener('keyup',m)
+     const tag= document.getElementById('linkTag')
+//    tag.href='index.html'
+//    tag.target='_blank'
+//    tag.click();
+//     console.log('a');
+
          const lists = document.querySelector('.main')
 const itemsfrom = lists.getElementsByClassName('showStyles')
 
 Array.from(itemsfrom).forEach(elem=>{
-  if(elem.firstElementChild.textContent===e.target.value)
+   let arr= e.target.value.split(' ');
+
+  if(elem.firstElementChild.textContent.includes(arr[0]))
   {
  
 elem.firstElementChild.style.backgroundColor = "red";
@@ -83,7 +93,7 @@ button.addEventListener('click',()=>{
    // displayShows(allEpisodes);
    const tag= document.getElementById('linkTag')
    tag.href='index.html'
-   tag.target='_blank'
+   tag.target='_self'
    tag.click();
     console.log('a');
 })
@@ -130,7 +140,7 @@ document.body.appendChild(rootElem);
     const link=document.createElement('a')
     link.id='linkTag'
     link.href='https://www.tvmaze.com/api#licensing'
-    link.target='_blank'
+   link.target='_blank'
     link.innerText= 'TVMaze.com'
    
      
@@ -186,7 +196,7 @@ Array.from(itemsfrom).forEach(elem=>{
 
 function makePageForEpisodes(episodeList)
 { const show = document.createElement('div');
-     show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${episodeList.name}-${episodeList.season.toString().padStart(3, 'S0')}${episodeList.number.toString().padStart(3, 'E0')}`; showImage.src = episodeList.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = episodeList.summary.substring(3, episodeList.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show);
+     show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${episodeList.name} - ${episodeList.season.toString().padStart(3, 'S0')}${episodeList.number.toString().padStart(3, 'E0')}`; showImage.src = episodeList.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = episodeList.summary.substring(3, episodeList.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show);
      }
 
 

@@ -120,7 +120,7 @@ document.body.appendChild(rootElem);
     heading.innerText = 'TV Shows';
 
     header.append(heading);
-    const main = document.createElement('main');
+    const main = document.createElement('ul');
     const mains= document.createElement('main');
     main.classList.add('main');
     mains.classList.add('main');
@@ -195,7 +195,7 @@ Array.from(itemsfrom).forEach(elem=>{
 }
 
 function makePageForEpisodes(episodeList)
-{ const show = document.createElement('div');
+{ const show = document.createElement('li');
      show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${episodeList.name} - ${episodeList.season.toString().padStart(3, 'S0')}${episodeList.number.toString().padStart(3, 'E0')}`; showImage.src = episodeList.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = episodeList.summary.substring(3, episodeList.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show);
      }
 

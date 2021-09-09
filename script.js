@@ -30,7 +30,7 @@ function setup() {
     document.body.appendChild(searchContainer)
     
     const select=document.createElement('select')
-    
+    const button=document.createElement('button')
 
 allEpisodes.forEach(episode=>{const option=document.createElement('option')
 option.value=`${episode.name}-${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')}`;
@@ -39,8 +39,9 @@ select.appendChild(option)
 })    
  const selectContainer= document.createElement('div')
  select.classList.add('selection')
- selectContainer.classList.add('select')
- selectContainer.appendChild(select)
+ selectContainer.classList.add('select') 
+ button.style.display='none'
+ selectContainer.append(select,button)
  
 document.body.appendChild(selectContainer)
     
@@ -50,19 +51,23 @@ const selectElement = document.querySelector('.selection');
 
 selectElement.addEventListener('click', (e) => 
 {
-
-        clearInterval(timeout)
+    search.removeEventListener('keyup',m)
          const lists = document.querySelector('.main')
 const itemsfrom = lists.getElementsByClassName('showStyles')
-//console.log(itemsfrom)
+
 Array.from(itemsfrom).forEach(elem=>{
   if(elem.firstElementChild.textContent===e.target.value)
   {
  
 elem.firstElementChild.style.backgroundColor = "red";
 elem.firstElementChild.id=e.target.value
+button.style.display='flex'
+elem.style.display='flex'
+
 }
-else {elem.firstElementChild.removeAttribute('style');}
+else {elem.firstElementChild.removeAttribute('style');
+elem.style.display='none'
+}
 })
  
 const a = document.createElement('a')
@@ -74,7 +79,14 @@ a.click();
  // const result = document.querySelector('.result');
  
 
-
+button.addEventListener('click',()=>{
+   // displayShows(allEpisodes);
+   const tag= document.getElementById('linkTag')
+   tag.href='index.html'
+   tag.target='_blank'
+   tag.click();
+    console.log('a');
+})
 
 
 ////////////////////////////////////////
@@ -93,13 +105,13 @@ a.click();
 document.body.appendChild(rootElem);
     header.classList.add('header');
 
-    let heading = document.createElement('h1');
+    const heading = document.createElement('h1');
 
     heading.innerText = 'TV Shows';
 
     header.append(heading);
-    let main = document.createElement('main');
-    let mains= document.createElement('main');
+    const main = document.createElement('main');
+    const mains= document.createElement('main');
     main.classList.add('main');
     mains.classList.add('main');
     rootElem.appendChild(main);
@@ -111,16 +123,17 @@ document.body.appendChild(rootElem);
 
 
     
-    let footer = document.createElement('footer');
+    const footer = document.createElement('footer');
     footer.classList.add('footer');
-    let site = document.createElement('p');
+    const site = document.createElement('p');
     site.innerText = '@copyright';
-    let link=document.createElement('a')
+    const link=document.createElement('a')
+    link.id='linkTag'
     link.href='https://www.tvmaze.com/api#licensing'
     link.target='_blank'
     link.innerText= 'TVMaze.com'
-    let filtered=[];
-     const parent = document.querySelector(".root")
+   
+     
     
 
 
@@ -130,10 +143,11 @@ document.body.appendChild(rootElem);
 
     
     footer.appendChild(link)
-    let arr=[]
+  
      allEpisodes.forEach(makePageForEpisodes);
    let timeout;
-search.addEventListener('keyup',()=>{
+search.addEventListener('keyup',m)
+function m(){
 
    timeout= setInterval(()=>{
 clearInterval(timeout)
@@ -168,7 +182,7 @@ Array.from(itemsfrom).forEach(elem=>{
 
 },500)
 
-})
+}
 
 function makePageForEpisodes(episodeList)
 { const show = document.createElement('div');
@@ -176,15 +190,6 @@ function makePageForEpisodes(episodeList)
      }
 
 
-
-
-    // const rootElem = document.getElementById("root");
-    // rootElem.textContent = `Got ${episodeList.length} episode(s)`;
 }
 
 window.onload = setup;
-
-// /creating header and grid
-// let root = document.getElementById("root")
-
-// const main= document.createElement('div')

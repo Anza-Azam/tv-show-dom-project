@@ -5,6 +5,7 @@ function setup() {
   makePageForEpisodes(allEpisodes);
   // console.log(allEpisodes);
   createEpisodeCard(allEpisodes)
+  createOptions(allEpisodes)
  //let fil=allEpisodes.filter(elem=>allEpisodes.indexOf(elem)===0)
  //createEpisodeCard(fil)
 }
@@ -69,6 +70,19 @@ episodeList.classList.add('main');
 
 
 
+function createOptions(episodeList){  
+const selectOptions= document.querySelector('select');
+
+episodeList.forEach(episode=>{const option=document.createElement('option')
+option.value=`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`;
+option.innerText=`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`;
+selectOptions.appendChild(option)
+})    
+
+}
+
+
+
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
  // rootElem.textContent = `Got ${episodeList.length} episode(s)`;
@@ -91,7 +105,13 @@ const searchContainer= document.createElement('div')
     searchContainer.append(search,displayNumbers)
 
     document.body.insertBefore(searchContainer,rootElem)
+    const select=document.createElement('select')
+select.classList.add('select')
+ const selectContainer= document.createElement('div')
+ selectContainer.appendChild(select)
 
+ document.body.insertBefore(selectContainer,searchContainer)
+ selectContainer.classList.add('selection')
  const footer = document.createElement('footer');
     footer.classList.add('footer');
     const site = document.createElement('p');
@@ -119,6 +139,9 @@ const searchContainer= document.createElement('div')
    let screen= document.getElementById('root')
    let list= document.querySelector('.main')
    screen.removeChild(list);
+   let options= document.querySelector('.select')
+   removeAllChildNodes(options)
+
 allEpisodes = getAllEpisodes()
 let userInput=e.target.value.toLowerCase();
 let a= allEpisodes.filter(episode=>{if(episode.name.toLowerCase().includes(userInput)||episode.summary.toLowerCase().includes(userInput))
@@ -126,10 +149,14 @@ let a= allEpisodes.filter(episode=>{if(episode.name.toLowerCase().includes(userI
     })
 displayNumbers.innerText= `displaying ${a.length} / ${allEpisodes.length}`;
 createEpisodeCard(a)
-
+createOptions(a);
 
     })
 
 }
-
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
 window.onload = setup;

@@ -1,13 +1,11 @@
 * {
 	box-sizing: border-box;
-
 	margin: 0;
 	padding: 0;
 }
 
 body {
 	font-size: 10px;
-
 	margin: 0;
 	padding: 0;
 	height: 100%;
@@ -16,11 +14,12 @@ html {
 	margin: 0;
 	height: 100%;
 }
+
 @viewport {
 	width: 100%; /*Sets the width of the actual viewport to the device width*/
 }
 a{padding-left: 10px;}
-.root {
+#root {
 	margin: 0 auto;
 
 	width: 80%;
@@ -115,21 +114,21 @@ font-size: 2rem;
 	font-size: 10px;
 	padding: 10px;
 }
-.inputs >p{font-size:1rem;}
+.inputs > p{font-size:1rem;}
 /* showstyles*/
 .select{
 	display:flex;
 	justify-content:center;
 
 }
-.showStyles {
+.episode-card{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	align-content: center;
 	justify-content: flex-start;
 
-	border: 5px solid rgba(90, 80, 80, 0.115);
+	border: 5px solid rgba(37, 31, 31, 0.115);
 	border-radius: 10px;
 
 	flex-wrap: wrap;
@@ -140,7 +139,7 @@ img {
 	width: 100%;
 	object-fit: cover;
 }
-.showStyles > h2 {
+.episode-card> h2 {
 	border: 5px solid black;
 	border-radius: 20px;
 	display: flex;
@@ -149,7 +148,7 @@ img {
 	text-align: center;
 	width: 100%;
 }
-.showItem {
+.episode-name {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
@@ -165,8 +164,8 @@ img {
 	font-size: 1rem;
 }
 
-
-.showItemd {
+li{list-style: none;}
+.summary {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
@@ -182,7 +181,7 @@ img {
 	font-size: 1rem;
 }
 
-.showItemimg {
+.image-container{
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;

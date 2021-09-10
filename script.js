@@ -1,24 +1,87 @@
-// You can edit ALL of the code here
-function setup() {
-    const allEpisodes = getAllEpisodes();
-   displayShows(allEpisodes)
+let allEpisodes = []
 
+function setup() {
+  allEpisodes = getAllEpisodes();
+  makePageForEpisodes(allEpisodes);
+  // console.log(allEpisodes);
+  createEpisodeCard(allEpisodes)
+ //let fil=allEpisodes.filter(elem=>allEpisodes.indexOf(elem)===0)
+ //createEpisodeCard(fil)
+}
+
+function createEpisodeCard(allEpisodes) {
+  const episodeList = document.createElement("ul")
+episodeList.classList.add('main');
+  allEpisodes.forEach(episode => {
+    const LI = document.createElement('li')
+    LI.className = "episode-card"
+    
+    const 
+      name = episode.name,
+      season = episode.season,
+      number = episode.number,
+      summary = episode.summary.substring(3, episode.summary.length - 4);
+      image = episode.image.medium;
+
+      const nameEl = document.createElement('h2') 
+      nameEl.className = "episode-name"
+     // nameEl.innerText = name
+
+      const formattedSeason = (""+season).padStart(2, "0") //type coercsion
+      const formattedNumber = (""+number).padStart(2, "0") //type coercsion
+      const episodeVersion = `S${formattedSeason}E${formattedNumber}`
+
+
+      const episodeVersionH3 = document.createElement('h2')
+      episodeVersionH3.innerText = name + " - " + episodeVersion
+
+      const imageContainer= document.createElement('div');
+      imageContainer.classList.add('image-container')
+      const episodeImg = document.createElement('img');
+      imageContainer.appendChild(episodeImg)
+      episodeImg.src=image;
+
+       const episodeSummary = document.createElement('p');
+       episodeSummary.classList.add('summary')
+      episodeSummary.innerText=summary;
+    // created h2 tag for episode name
+    //S02E05 format
+    // `S${season}E${number}`
+    // 
+    //appended episode name to li element.
+   // LI.appendChild(nameEl)
+    LI.appendChild(episodeVersionH3)
+    LI.appendChild(imageContainer)
+    LI.appendChild(episodeSummary)
+
+    episodeList.appendChild(LI) // appended li to ul element
+  }) 
+
+  const rootEl = document.getElementById("root")
+  
+  // targetting root element in the DOM
+  
+  
+  
+  rootEl.appendChild(episodeList)
+    
 }
 
 
 
-   function displayShows(allEpisodes)
+function makePageForEpisodes(episodeList) {
+  const rootElem = document.getElementById("root");
+ // rootElem.textContent = `Got ${episodeList.length} episode(s)`;
+ let header = document.createElement('header');
+    document.body.prepend(header);
+    header.classList.add('header');
 
-//function makePageForEpisodes(episodeList)
- {
-    
+    const heading = document.createElement('h1');
 
+    heading.innerText = 'TV Shows';
+    header.appendChild(heading)
 
-    let rootElem = document.createElement('div');
-    rootElem.classList.add('root');
-    let header = document.createElement('header');
-    document.body.appendChild(header);
-    const searchContainer= document.createElement('div')
+const searchContainer= document.createElement('div')
     const displayNumbers=document.createElement('p')
     const search=document.createElement('input');
     search.type='text'
@@ -27,113 +90,9 @@ function setup() {
     searchContainer.classList.add('inputs')
     searchContainer.append(search,displayNumbers)
 
-    document.body.appendChild(searchContainer)
-    
-    const select=document.createElement('select')
-    const button=document.createElement('button')
-    button.innerText = ("Show all Episodes")
+    document.body.insertBefore(searchContainer,rootElem)
 
-allEpisodes.forEach(episode=>{const option=document.createElement('option')
-option.value=`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`;
-option.innerText=`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`;
-select.appendChild(option)
-})    
- const selectContainer= document.createElement('div')
- select.classList.add('selection')
- selectContainer.classList.add('select') 
- button.style.display='none'
- button.classList.add('button')
- selectContainer.append(select,button)
- 
-document.body.appendChild(selectContainer)
-    
-
-////////////////////////////////////////////////////////////////////////
-const selectElement = document.querySelector('.selection');
-
-selectElement.addEventListener('click', (e) => 
-{
-    search.removeEventListener('keyup',m)
-     const tag= document.getElementById('linkTag')
-//    tag.href='index.html'
-//    tag.target='_blank'
-//    tag.click();
-//     console.log('a');
-
-         const lists = document.querySelector('.main')
-const itemsfrom = lists.getElementsByClassName('showStyles')
-
-Array.from(itemsfrom).forEach(elem=>{
-   let arr= e.target.value.split(' ');
-
-  if(elem.firstElementChild.textContent.includes(arr[0]))
-  {
- 
-elem.firstElementChild.style.backgroundColor = "red";
-elem.firstElementChild.id=e.target.value
-button.style.display='flex'
-elem.style.display='flex'
-
-}
-else {elem.firstElementChild.removeAttribute('style');
-elem.style.display='none'
-}
-})
- 
-const a = document.createElement('a')
-a.href=`#${e.target.value}`;
-selectContainer.appendChild(a);
-a.style.visibility='hidden';
-a.click();
-    })
- // const result = document.querySelector('.result');
- 
-
-button.addEventListener('click',()=>{
-   // displayShows(allEpisodes);
-   const tag= document.getElementById('linkTag')
-   tag.href='index.html'
-   tag.target='_self'
-   tag.click();
-    console.log('a');
-})
-
-
-////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-document.body.appendChild(rootElem);
-    header.classList.add('header');
-
-    const heading = document.createElement('h1');
-
-    heading.innerText = 'TV Shows';
-
-    header.append(heading);
-    const main = document.createElement('ul');
-    const mains= document.createElement('main');
-    main.classList.add('main');
-    mains.classList.add('main');
-    rootElem.appendChild(main);
-
-   
-
-
-
-
-
-    
-    const footer = document.createElement('footer');
+ const footer = document.createElement('footer');
     footer.classList.add('footer');
     const site = document.createElement('p');
     site.innerText = '@copyright';
@@ -144,61 +103,32 @@ document.body.appendChild(rootElem);
     link.innerText= 'TVMaze.com'
    
      
-    
+   
 
 
  
     document.body.appendChild(footer);
     footer.appendChild(site);
 
-    
+   
     footer.appendChild(link)
-  
-     allEpisodes.forEach(makePageForEpisodes);
-   let timeout;
-search.addEventListener('keyup',m)
-function m(){
-
-   timeout= setInterval(()=>{
-clearInterval(timeout)
-let i=0,j=0;
-     const lists = document.querySelector('.main')
-
-const term=search.value.toLowerCase();
-const itemsfrom = lists.getElementsByClassName('showStyles')
-//console.log(itemsfrom)
-Array.from(itemsfrom).forEach(elem=>{
-    if(term.length===0){elem.style.display='flex'
- displayNumbers.innerText=`Displaying ${allEpisodes.length} / ${allEpisodes.length} results`
-}
-else
-    if(!elem.firstElementChild.textContent.toLowerCase().includes(term)&&(!elem.lastElementChild.textContent.toLowerCase().includes(term))) 
-    {elem.style.display='none'
-    
-}
-    else{
-        elem.style.display='flex'
-        i+=1; displayNumbers.innerText=`Displaying ${i} / ${allEpisodes.length} results`
-    }
-})
-let total=[]
-Array.from(itemsfrom).forEach(elem=>{
-    if(elem.style.display==='none')
-    total.push(true)
-    else total.push(false)})
-    if (total.every(elem=>elem===true))
- displayNumbers.innerText=`Displaying ${j} / ${allEpisodes.length} results`
 
 
-},500)
+    searchContainer.addEventListener('input',(e)=>{
 
-}
+   let screen= document.getElementById('root')
+   let list= document.querySelector('.main')
+   screen.removeChild(list);
+allEpisodes = getAllEpisodes()
+let userInput=e.target.value.toLowerCase();
+let a= allEpisodes.filter(episode=>{if(episode.name.toLowerCase().includes(userInput)||episode.summary.toLowerCase().includes(userInput))
+    return episode
+    })
+displayNumbers.innerText= `displaying ${a.length} / ${allEpisodes.length}`;
+createEpisodeCard(a)
 
-function makePageForEpisodes(episodeList)
-{ const show = document.createElement('li');
-     show.classList.add('showStyles'); const showHeading = document.createElement('h2'); const imgDiv = document.createElement('div'); const showImage = document.createElement('img'); const showDescription = document.createElement('p'); showHeading.classList.add('showItem'); showImage.classList.add('showItem'); showDescription.classList.add('showItem'); showHeading.innerText = `${episodeList.name} - ${episodeList.season.toString().padStart(3, 'S0')}${episodeList.number.toString().padStart(3, 'E0')}`; showImage.src = episodeList.image.medium; imgDiv.appendChild(showImage); showDescription.innerText = episodeList.summary.substring(3, episodeList.summary.length - 4); show.append(showHeading, imgDiv, showDescription); main.append(show); main.appendChild(show);
-     }
 
+    })
 
 }
 

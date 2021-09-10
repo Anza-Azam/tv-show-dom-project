@@ -56,7 +56,7 @@ function createEpisodeCard(allEpisodes)
 	const rootEl = document.getElementById('root');
 
 	// targetting root element in the DOM
-
+//return episodeList;
 	rootEl.appendChild(episodeList);
 
 }

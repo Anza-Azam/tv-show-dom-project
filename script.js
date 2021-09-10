@@ -108,7 +108,12 @@ const searchContainer= document.createElement('div')
     const select=document.createElement('select')
 select.classList.add('select')
  const selectContainer= document.createElement('div')
- selectContainer.appendChild(select)
+ const button=document.createElement('button')
+ button.style.display='none'
+ button.classList.add('button')
+    button.innerText = ("Show all Episodes")
+ selectContainer.append(select,button)
+
 
  document.body.insertBefore(selectContainer,searchContainer)
  selectContainer.classList.add('selection')
@@ -133,7 +138,14 @@ select.classList.add('select')
    
     footer.appendChild(link)
 
-
+button.addEventListener('click',()=>{
+   // displayShows(allEpisodes);
+   const tag= document.getElementById('linkTag')
+   tag.href='index.html'
+   tag.target='_self'
+   tag.click();
+    console.log('a');
+})
     searchContainer.addEventListener('input',(e)=>{
 
    let screen= document.getElementById('root')
@@ -156,6 +168,7 @@ createOptions(a);
 
 
 select.addEventListener('change',(e)=>{
+    button.style.display='flex'
 allEpisodes=getAllEpisodes();
 let selected= allEpisodes.filter(episode=>{if(e.target.value===`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`){
     return episode;

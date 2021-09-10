@@ -153,7 +153,26 @@ createOptions(a);
 
     })
 
+
+
+select.addEventListener('change',(e)=>{
+allEpisodes=getAllEpisodes();
+let selected= allEpisodes.filter(episode=>{if(e.target.value===`${episode.season.toString().padStart(3, 'S0')}${episode.number.toString().padStart(3, 'E0')} - ${episode.name}`){
+    return episode;
 }
+
+
+})
+
+let screen= document.getElementById('root')
+   let list= document.querySelector('.main')
+   screen.removeChild(list);
+createEpisodeCard(selected)
+
+})
+}
+
+
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);

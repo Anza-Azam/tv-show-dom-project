@@ -1,3 +1,4 @@
+//import {createEpisodeCard} from 'episodecard.js'
 let allEpisodes = [];
 
 function setup() {
@@ -7,7 +8,9 @@ function setup() {
 	createOptions(allEpisodes);
 }
 
-function createEpisodeCard(allEpisodes) {
+function createEpisodeCard(allEpisodes) 
+{ 
+ 
 	const episodeList = document.createElement('ul');
 	episodeList.classList.add('main');
 	allEpisodes.forEach((episode) => {
@@ -36,6 +39,7 @@ function createEpisodeCard(allEpisodes) {
 		const episodeImg = document.createElement('img');
 		imageContainer.appendChild(episodeImg);
 		episodeImg.src = image;
+        episodeImg.alt='show episode'
 
 		const episodeSummary = document.createElement('p');
 		episodeSummary.classList.add('summary');
@@ -54,6 +58,7 @@ function createEpisodeCard(allEpisodes) {
 	// targetting root element in the DOM
 
 	rootEl.appendChild(episodeList);
+
 }
 
 function createOptions(episodeList) {
@@ -129,25 +134,7 @@ function makePageForEpisodes() {
 		console.log('a');
 	});
     searchContainer.addEventListener('input',searchList);
-	// searchContainer.addEventListener('input', (e) => {
-	// 	let screen = document.getElementById('root');
-	// 	let list = document.querySelector('.main');
-	// 	screen.removeChild(list);
-	// 	let options = document.querySelector('.select');
-	// 	removeAllChildNodes(options);
-
-	// 	allEpisodes = getAllEpisodes();
-	// 	let userInput = e.target.value.toLowerCase();
-	// 	let a = allEpisodes.filter((episode) => {
-	// 		if (episode.name.toLowerCase().includes(userInput) || episode.summary.toLowerCase().includes(userInput))
-	// 			return episode;
-	// 	});
-	// 	displayNumbers.innerText = `displaying ${a.length} / ${allEpisodes.length}`;
-	// 	createEpisodeCard(a);
-	// 	createOptions(a);
-	// });
-
-	select.addEventListener('change', selectList);
+	select.addEventListener('click', selectList);
 }
 
 

@@ -24,7 +24,7 @@ function createEpisodeCard(allEpisodes) {
 
         // const nameEl = document.createElement('h2'); //heading of episode /name of episode
         // nameEl.className = 'episode-name';
-        
+
 
         const formattedSeason = ('' + season).padStart(2, '0'); //type coersion
         const formattedNumber = ('' + number).padStart(2, '0'); //type coersion
@@ -54,7 +54,7 @@ function createEpisodeCard(allEpisodes) {
     const rootEl = document.getElementById('root');
 
     // targeting root element in the DOM
-    
+
     rootEl.appendChild(episodeList);
 }
 
@@ -75,17 +75,17 @@ function makePageForEpisodes() {
     const displayNumbers = document.createElement('p');
     displayNumbers.id = 'display';
     const search = document.createElement('input');
-    const searchLabel =document.createElement('label');
+    const searchLabel = document.createElement('label');
     searchLabel.classList.add('label')
-    searchLabel.innerText="Search Episode";
+    searchLabel.innerText = "Search Episode";
     search.type = 'text';
     search.placeholder = 'Enter key word';
 
     searchContainer.classList.add('inputs');
     searchContainer.append(searchLabel, search, displayNumbers);
     document.body.insertBefore(searchContainer, rootElem);
-    const selectLabel =document.createElement('label');
-    selectLabel.innerText= 'Select Episode'
+    const selectLabel = document.createElement('label');
+    selectLabel.innerText = 'Select Episode'
     selectLabel.classList.add('label')
     const select = document.createElement('select');             //select display for options of episodes available
     select.classList.add('select');
@@ -94,9 +94,9 @@ function makePageForEpisodes() {
     button.style.display = 'none';
     button.classList.add('button');
     button.innerText = 'Show all Episodes';
-    selectContainer.append(selectLabel,select, button);
+    selectContainer.append(selectLabel, select, button);
 
-    document.body.insertBefore(selectContainer, searchContainer);
+    document.body.insertBefore(selectContainer, searchContainer); //select and search appended to the body 
     selectContainer.classList.add('selection');
     const footer = document.createElement('footer');
     footer.classList.add('footer');
@@ -112,16 +112,15 @@ function makePageForEpisodes() {
     footer.appendChild(site);
 
     footer.appendChild(link);
-
+    //button event to display all episodes
     button.addEventListener('click', () => {
         const tag = document.getElementById('linkTag');
         tag.href = 'index.html';
         tag.target = '_self';
         tag.click();
-        console.log('a');
     });
-    searchContainer.addEventListener('input', searchList);
-    select.addEventListener('click', selectList);
+    searchContainer.addEventListener('input', searchList);//event listener search
+    select.addEventListener('change', selectList);//event listener select 
 }
 
 // populate Episode options when episode are searched or all episodes if no search made
@@ -139,7 +138,7 @@ function createOptions(episodeList) {
         selectOptions.appendChild(option);
     });
 }
-
+//search event listener's call back function
 function searchList(e) {
     const screen = document.getElementById('root');
     const list = document.querySelector('.main');
@@ -158,7 +157,7 @@ function searchList(e) {
     createEpisodeCard(allMatchedEpisodes);
     createOptions(allMatchedEpisodes);
 }
-
+//select event listener's call back function
 function selectList(e) {
     const button = document.querySelector('.button');
     button.style.display = 'flex';
@@ -179,7 +178,7 @@ function selectList(e) {
     screen.removeChild(list);
     createEpisodeCard(selected);
 }
-
+//remove options dynamically
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);

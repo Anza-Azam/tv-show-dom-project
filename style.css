@@ -49,9 +49,9 @@ a{padding-left: 10px;}
 	display:flex;
  justify-content: center;
 font-size: 2rem;
-	/* align-items: center;
-	text-align: center; */
-	margin:auto;
+	min-width: 200px;
+	min-height:50px;
+	margin-top:1rem;
 }
 .inputs > p{ padding-left:20px;
 	
@@ -118,9 +118,13 @@ font-size: 2rem;
 /* showstyles*/
 .selection{
 	display:flex;
+	margin-top:1rem;
 	justify-content:center;
+	
 
 }
+option{min-width:800px;
+	min-height:50px;}
 .episode-card{
 	display: flex;
 	align-items: center;
@@ -128,11 +132,11 @@ font-size: 2rem;
 	align-content: center;
 	justify-content: flex-start;
 
-	border: 5px solid rgba(37, 31, 31, 0.115);
+	border: 5px solid rgba(20, 5, 5, 0.115);
 	border-radius: 10px;
-
+margin-left:50px;
 	flex-wrap: wrap;
-	font-size: 10px;
+	font-size: 1rem;
 }
 img {
 	height: 100%;
@@ -143,11 +147,23 @@ img {
 	border: 5px solid black;
 	border-radius: 20px;
 	display: flex;
+	font-weight:bolder;
     font-weight:bolder;
 	justify-content: center;
 	text-align: center;
 	width: 100%;
 }
+.label{
+	margin-right:10px;
+	font-size: 1rem;
+	border-radius: 2px;
+	border: 2px solid black;
+background-color: burlywood;
+text-align: center;
+padding:10px;
+color:black;
+}
+
 .episode-name {
 	display: flex;
 	flex-wrap: wrap;

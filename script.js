@@ -154,7 +154,9 @@ async function setup() {
         tag.click();
     });
     searchContainer.addEventListener('input', searchList);//event listener search
-    select.addEventListener('change', selectList);//event listener select 
+     select.addEventListener('change', selectList);//event listener select 
+     showNames.addEventListener('change', selectShows);
+     
 }
 
 // populate Episode options when episode are searched or all episodes if no search made
@@ -175,7 +177,12 @@ function createOptions(episodeList) {
 
 function showOptions(episodeList) {
     const selectOptions = document.getElementById('shows');
-    episodeList = episodeList.sort((a, b) => a - b);
+    episodeList = episodeList.sort((a, b)=> {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+    return 0;
+  }
+);
     episodeList.forEach((episode) => {
         const option = document.createElement('option');
         option.value = `${episode.name}`;
@@ -218,11 +225,19 @@ async function selectList(e) {
         }
     });
 
+    
     const screen = document.getElementById('root');
     const list = document.querySelector('.main');
     screen.removeChild(list);
     createEpisodeCard(selected);
 }
+
+async function selectShows(e) {
+
+    let userSelectedShow = e.target.value;
+   
+    console.log(userSelectedShow)
+ }
 //remove options dynamically
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {

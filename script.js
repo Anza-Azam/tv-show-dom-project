@@ -1,7 +1,13 @@
+//import episode card to render the data
 import createEpisodeCard from "./episodecard.js";
+import getAllShows from "./shows.js";
+
 
 let allShowEpisodes = [];
 let allEpisodes = [];
+let allAvailableShows = []
+
+
 async function getAllEpisodes() {
 
     let url = 'https://api.tvmaze.com/shows/527/episodes';
@@ -13,18 +19,18 @@ async function getAllEpisodes() {
 }
     
 
-
-
 //Setup
 async function setup() {
-   // allEpisodes = getAllEpisodes(); //all episodes
+   
     allShowEpisodes = await getAllEpisodes();
+    allAvailableShows =await  getAllShows();
     allEpisodes = allShowEpisodes.map(episode => episode)
     console.log(allEpisodes)
     console.log(allEpisodes.length);
      makePageForEpisodes(); // initial page for all episodes
     createEpisodeCard(allEpisodes); //single episode card for available / matched episode
-    createOptions(allEpisodes); //available episodes in the selection
+    createOptions(allEpisodes);
+    showOptions(allAvailableShows); //available episodes in the selection
     
     
 }
@@ -107,15 +113,22 @@ async function setup() {
     document.body.insertBefore(searchContainer, rootElem);
     const selectLabel = document.createElement('label');
     selectLabel.innerText = 'Select Episode'
-    selectLabel.classList.add('label')
-    const select = document.createElement('select');             //select display for options of episodes available
-    select.classList.add('select');
+     selectLabel.classList.add('label')
+     const selectLabel2 = document.createElement('label');
+    selectLabel2.innerText = 'Select Show'
+    selectLabel2.classList.add('label')
+     const select = document.createElement('select');
+               //select display for options of episodes available
+     const showNames = document.createElement('select');
+     showNames.classList.add('select');
+     showNames.id='shows'
+     select.classList.add('select');
     const selectContainer = document.createElement('div');
     const button = document.createElement('button');
     button.style.display = 'none';
     button.classList.add('button');
     button.innerText = 'Show all Episodes';
-    selectContainer.append(selectLabel, select, button);
+    selectContainer.append(selectLabel, select,selectLabel2, showNames,  button);
 
     document.body.insertBefore(selectContainer, searchContainer); //select and search appended to the body 
     selectContainer.classList.add('selection');
@@ -159,6 +172,17 @@ function createOptions(episodeList) {
         selectOptions.appendChild(option);
     });
 }
+
+function showOptions(episodeList) {
+    const selectOptions = document.getElementById('shows');
+    episodeList = episodeList.sort((a, b) => a - b);
+    episodeList.forEach((episode) => {
+        const option = document.createElement('option');
+        option.value = `${episode.name}`;
+        option.innerText = `${episode.name}`;
+        selectOptions.appendChild(option);
+    });
+}
 //search event listener's call back function
   async function searchList(e) {
     const screen = document.getElementById('root');
@@ -183,7 +207,7 @@ async function selectList(e) {
     const button = document.querySelector('.button');
     button.style.display = 'flex';
     allEpisodes =await getAllEpisodes();
-    const selected = await allEpisodes.filter((episode) => {
+    const selected =allEpisodes.filter((episode) => {
         if (
             e.target.value ===
             `${episode.season.toString().padStart(3, 'S0')}${episode.number

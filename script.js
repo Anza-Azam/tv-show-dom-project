@@ -1,4 +1,5 @@
 import createEpisodeCard from "./episeodecard.js";
+import  getAllEpisodes from "./episodes.js";
 //all Episodes
 let allEpisodes = [];
 //Setup

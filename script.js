@@ -8,9 +8,13 @@ let allEpisodes = [];
 let allAvailableShows = []
 
 
-async function getAllEpisodes() {
-
-    let url = 'https://api.tvmaze.com/shows/527/episodes';
+async function getAllEpisodes(id) {
+    let select= document.getElementById('shows');
+    
+    allAvailableShows = getAllShows();
+    let element= allAvailableShows.find(ele=>ele.name==="Band of Brothers")
+    id = element.id;
+    let url = `https://api.tvmaze.com/shows/${id}/episodes`;
     let res = fetch(url).then(res => res.json()).catch(error => console.log(error))
     return res;
   
@@ -235,7 +239,7 @@ async function selectList(e) {
 async function selectShows(e) {
 
     let userSelectedShow = e.target.value;
-   
+  
     console.log(userSelectedShow)
  }
 //remove options dynamically

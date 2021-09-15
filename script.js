@@ -1,13 +1,32 @@
-import createEpisodeCard from "./episeodecard.js";
-import  getAllEpisodes from "./episodes.js";
-//all Episodes
+import createEpisodeCard from "./episodecard.js";
+
+let allShowEpisodes = [];
 let allEpisodes = [];
+async function getAllEpisodes() {
+
+    let url = 'https://api.tvmaze.com/shows/527/episodes';
+    let res = fetch(url).then(res => res.json()).catch(error => console.log(error))
+    return res;
+  
+
+        
+}
+    
+
+
+
 //Setup
-function setup() {
-    allEpisodes = getAllEpisodes(); //all episodes
-    makePageForEpisodes(); // initial page for all episodes
-    createEpisodeCard(allEpisodes); //singe episode card for available / matched episode
+async function setup() {
+   // allEpisodes = getAllEpisodes(); //all episodes
+    allShowEpisodes = await getAllEpisodes();
+    allEpisodes = allShowEpisodes.map(episode => episode)
+    console.log(allEpisodes)
+    console.log(allEpisodes.length);
+     makePageForEpisodes(); // initial page for all episodes
+    createEpisodeCard(allEpisodes); //single episode card for available / matched episode
     createOptions(allEpisodes); //available episodes in the selection
+    
+    
 }
 
 // function createEpisodeCard(allEpisodes) {
@@ -61,7 +80,7 @@ function setup() {
 // }
 
 // header body and footer styling and data presentation 
-function makePageForEpisodes() {
+ function makePageForEpisodes() {
     const rootElem = document.getElementById('root'); //root div with ul
 
     const header = document.createElement('header');
@@ -141,7 +160,7 @@ function createOptions(episodeList) {
     });
 }
 //search event listener's call back function
-function searchList(e) {
+  async function searchList(e) {
     const screen = document.getElementById('root');
     const list = document.querySelector('.main');
     screen.removeChild(list);
@@ -149,7 +168,7 @@ function searchList(e) {
     const options = document.querySelector('.select');
     removeAllChildNodes(options);
 
-    allEpisodes = getAllEpisodes();
+    allEpisodes = await getAllEpisodes();
     const userInput = e.target.value.toLowerCase();
     const allMatchedEpisodes = allEpisodes.filter((episode) => {
         if (episode.name.toLowerCase().includes(userInput) || episode.summary.toLowerCase().includes(userInput))
@@ -160,11 +179,11 @@ function searchList(e) {
     createOptions(allMatchedEpisodes);
 }
 //select event listener's call back function
-function selectList(e) {
+async function selectList(e) {
     const button = document.querySelector('.button');
     button.style.display = 'flex';
-    allEpisodes = getAllEpisodes();
-    const selected = allEpisodes.filter((episode) => {
+    allEpisodes =await getAllEpisodes();
+    const selected = await allEpisodes.filter((episode) => {
         if (
             e.target.value ===
             `${episode.season.toString().padStart(3, 'S0')}${episode.number

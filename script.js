@@ -6,15 +6,18 @@ import getAllShows from "./shows.js";
 let allShowEpisodes = [];
 let allEpisodes = [];
 let allAvailableShows = []
+let userSelectedShow = "";
 
 
-async function getAllEpisodes(id) {
-    let select= document.getElementById('shows');
+async function getAllEpisodes() {
+    let e= document.getElementById('shows');
+   // let nme= e.options[e.selectedIndex].text;
     
     allAvailableShows = getAllShows();
-    let element= allAvailableShows.find(ele=>ele.name==="Band of Brothers")
-    id = element.id;
-    let url = `https://api.tvmaze.com/shows/${id}/episodes`;
+    console.log(userSelectedShow)
+    //let element= allAvailableShows.find(ele=>ele.name===nme)
+    //id = element.id;
+    let url = `https://api.tvmaze.com/shows/82/episodes`;
     let res = fetch(url).then(res => res.json()).catch(error => console.log(error))
     return res;
   
@@ -27,10 +30,10 @@ async function getAllEpisodes(id) {
 async function setup() {
    
     allShowEpisodes = await getAllEpisodes();
-    allAvailableShows =await  getAllShows();
+   // allAvailableShows =await  getAllShows();
     allEpisodes = allShowEpisodes.map(episode => episode)
-    console.log(allEpisodes)
-    console.log(allEpisodes.length);
+    //console.log(allEpisodes)
+    //console.log(allEpisodes.length);
      makePageForEpisodes(); // initial page for all episodes
     createEpisodeCard(allEpisodes); //single episode card for available / matched episode
     createOptions(allEpisodes);
@@ -238,10 +241,47 @@ async function selectList(e) {
 
 async function selectShows(e) {
 
-    let userSelectedShow = e.target.value;
-  
+    userSelectedShow = e.target.value;
+
+
+async function getAllEpisodes2() {
+   // let e= document.getElementById('shows');
+   // let nme= e.options[e.selectedIndex].text;
+    let id;
+    allAvailableShows = getAllShows();
     console.log(userSelectedShow)
- }
+    let element= allAvailableShows.find(ele=>ele.name===userSelectedShow)
+    id = element.id;
+    console.log(id)
+    let url = `https://api.tvmaze.com/shows/${id}/episodes`;
+    let res = fetch(url).then(res => res.json()).catch(error => console.log(error))
+    return res;
+  
+
+        
+}
+  
+
+   
+    allShowEpisodes = await getAllEpisodes2();
+  
+    allEpisodes = allShowEpisodes.map(episode => episode)
+    console.log(allEpisodes.length)
+    const screen = document.getElementById('root');
+    const list = document.querySelector('.main');
+    screen.removeChild(list);
+    //createEpisodeCard(selected);
+    const options = document.querySelector('.select');
+    removeAllChildNodes(options);
+
+    createEpisodeCard(allEpisodes); //single episode card for available / matched episode
+    createOptions(allEpisodes);
+    showOptions(allAvailableShows); //available episodes in the selection
+    
+    
+}
+    //console.log(userSelectedShow)
+ 
 //remove options dynamically
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {

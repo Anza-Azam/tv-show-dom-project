@@ -9,7 +9,7 @@ export default function createEpisodeCard(allEpisodes) {
 
   //  allEpisodes = await getAllEpisodes();
     const episodeList = document.createElement('ul'); // Episode list
-   console.log(allEpisodes.length);
+  // console.log(allEpisodes.length);
     episodeList.classList.add('main'); //main class attached to list
     allEpisodes.forEach((episode) => {
         //for each episode a li card is created
@@ -23,9 +23,8 @@ export default function createEpisodeCard(allEpisodes) {
             summary = episode.summary.substring(3, episode.summary.length - 4), // removed summary tags that each episode had in summary
         image = episode.image.medium;
 
-        // const nameEl = document.createElement('h2'); //heading of episode /name of episode
-        // nameEl.className = 'episode-name';
-        console.log(episode.name);
+      
+      
 
         const formattedSeason = ('' + season).padStart(2, '0'); //type coersion
         const formattedNumber = ('' + number).padStart(2, '0'); //type coersion

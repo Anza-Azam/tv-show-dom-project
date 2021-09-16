@@ -154,11 +154,27 @@ async function setup() {
 
     footer.appendChild(link);
     //button event to display all episodes
-    button.addEventListener('click', () => {
-        const tag = document.getElementById('linkTag');
-        tag.href = 'index.html';
-        tag.target = '_self';
-        tag.click();
+     button.addEventListener('click', async () => {
+         allShowEpisodes = await getAllEpisodes2();
+  
+    allEpisodes = allShowEpisodes.map(episode => episode)
+    console.log(allEpisodes.length)
+    const screen = document.getElementById('root');
+    const list = document.querySelector('.main');
+    screen.removeChild(list);
+    //createEpisodeCard(selected);
+    const options = document.querySelector('.select');
+    removeAllChildNodes(options);
+
+    createEpisodeCard(allEpisodes); //single episode card for available / matched episode
+    createOptions(allEpisodes);
+    showOptions(allAvailableShows); //available episodes in the selection
+    
+    
+        // const tag = document.getElementById('linkTag');
+        // tag.href = 'index.html';
+        // tag.target = '_self';
+        // tag.click();
     });
     searchContainer.addEventListener('input', searchList);//event listener search
      select.addEventListener('change', selectList);//event listener select 
@@ -206,7 +222,7 @@ function showOptions(episodeList) {
     const options = document.querySelector('.select');
     removeAllChildNodes(options);
 
-    allEpisodes = await getAllEpisodes();
+   // allEpisodes = await getAllEpisodes();
     const userInput = e.target.value.toLowerCase();
     const allMatchedEpisodes = allEpisodes.filter((episode) => {
         if (episode.name.toLowerCase().includes(userInput) || episode.summary.toLowerCase().includes(userInput))
@@ -220,7 +236,7 @@ function showOptions(episodeList) {
 async function selectList(e) {
     const button = document.querySelector('.button');
     button.style.display = 'flex';
-    allEpisodes =await getAllEpisodes();
+   // allEpisodes =await getAllEpisodes();
     const selected =allEpisodes.filter((episode) => {
         if (
             e.target.value ===
@@ -238,12 +254,6 @@ async function selectList(e) {
     screen.removeChild(list);
     createEpisodeCard(selected);
 }
-
-async function selectShows(e) {
-
-    userSelectedShow = e.target.value;
-
-
 async function getAllEpisodes2() {
    // let e= document.getElementById('shows');
    // let nme= e.options[e.selectedIndex].text;
@@ -260,6 +270,12 @@ async function getAllEpisodes2() {
 
         
 }
+async function selectShows(e) {
+
+    userSelectedShow = e.target.value;
+
+
+
   
 
    

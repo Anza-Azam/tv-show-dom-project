@@ -57,6 +57,8 @@ export default function createEpisodeCard(allEpisodes) {
         const episodeSummary = document.createElement('p');  //episode summary
         episodeSummary.classList.add('summary');
         episodeSummary.innerText = summary;
+        const search= document.getElementById('searchBox')
+        search.removeAttribute('disabled')
 
         lI.appendChild(episodeVersionH2);
         lI.appendChild(imageContainer);
@@ -71,7 +73,8 @@ export default function createEpisodeCard(allEpisodes) {
       lI.innerText = 'Sorry, episode Image/Summary is not available';
        episodeVersionH2.innerText = episode.name + ' - ' + episodeVersion;
       lI.appendChild(episodeVersionH2); episodeList.appendChild(lI);
-      const search= document.getElementById('searchBox')
+      const search = document.getElementById('searchBox');
+      search.innerText = '';
       search.disabled='true'
     }
   })

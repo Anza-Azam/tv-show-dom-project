@@ -229,12 +229,12 @@ function showOptions(episodeList) {
 );
     episodeList.forEach((episode) => {
         const option = document.createElement('option');
-        if (/[^a-zA-Z]/.test(episode.name)) {
+        
             option.value = `${episode.name}`;
            // console.log(episode.name);
             option.innerText = `${episode.name}`;
             selectOptions.appendChild(option);
-        }
+        
     });
 }
 //search event listener's call back function
@@ -304,7 +304,7 @@ async function selectShows(e) {
 
     userSelectedShow = e.target.value;
 
-
+     
 
   
 
@@ -319,7 +319,8 @@ async function selectShows(e) {
     //createEpisodeCard(selected);
     const options = document.querySelector('.select');
     removeAllChildNodes(options);
-
+    const showOption= document.getElementById('shows');
+    removeAllChildNodes(showOption);
     createEpisodeCard(allEpisodes); //single episode card for available / matched episode
     createOptions(allEpisodes);
     showOptions(allAvailableShows); //available episodes in the selection

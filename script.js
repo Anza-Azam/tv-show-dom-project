@@ -131,7 +131,7 @@ async function setup() {
     searchLabel.innerText = "Search Episode";
     search.type = 'text';
     search.placeholder = 'Enter key word';
-
+search.id='searchBox'
     searchContainer.classList.add('inputs');
     searchContainer.append(searchLabel, search, displayNumbers);
     document.body.insertBefore(searchContainer, rootElem);
@@ -202,7 +202,8 @@ async function setup() {
 // populate Episode options when episode are searched or all episodes if no search made
 function createOptions(episodeList) {
     const selectOptions = document.querySelector('select');
-
+ const search = document.getElementById('searchBox');
+    search.innerText=''
     episodeList.forEach((episode) => {
         const option = document.createElement('option');
         option.value = `${episode.season.toString().padStart(3, 'S0')}${episode.number
@@ -254,6 +255,8 @@ function showOptions(episodeList) {
 }
 //select event listener's call back function
 async function selectList(e) {
+    const search = document.getElementById('searchBox');
+    search.innerText=''
     const button = document.querySelector('.button');
     button.style.display = 'flex';
    // allEpisodes =await getAllEpisodes();

@@ -247,10 +247,13 @@ function showOptions(episodeList) {
     removeAllChildNodes(options);
 
    // allEpisodes = await getAllEpisodes();
+      
     const userInput = e.target.value.toLowerCase();
-    const allMatchedEpisodes = allEpisodes.filter((episode) => {
-        if (episode.name.toLowerCase().includes(userInput) || episode.summary.toLowerCase().includes(userInput))
-            return episode;
+      const allMatchedEpisodes = allEpisodes.filter((episode) => {
+          if (episode.image !== null && episode.summary !== null) {
+              if (episode.name.toLowerCase().includes(userInput) || episode.summary.toLowerCase().includes(userInput))
+                  return episode;
+          }
     });
     displayNumbers.innerText = `displaying ${allMatchedEpisodes.length} / ${allEpisodes.length}`;
     createEpisodeCard(allMatchedEpisodes);

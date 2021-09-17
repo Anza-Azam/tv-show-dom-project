@@ -16,10 +16,7 @@ export default function createEpisodeCard(allEpisodes) {
     const lI = document.createElement('li');
     const episodeVersionH2 = document.createElement('h2'); // episode heading
     const season = episode.season, number = episode.number;
-    // const summary = episode.summary.substring(3, episode.summary.length - 4);
-    // const episodeSummary = document.createElement('p');  //episode summary
-    //   episodeSummary.classList.add('summary');
-    //   episodeSummary.innerText = summary;
+    
 
       const formattedSeason = ('' + season).padStart(2, '0'); //type coersion
       const formattedNumber = ('' + number).padStart(2, '0'); //type coersion
@@ -70,12 +67,10 @@ export default function createEpisodeCard(allEpisodes) {
 
 
     else {
-      lI.innerText = 'Sorry, episode Image/Summary is not available';
+      lI.innerText = 'Sorry, episode is not available';
        episodeVersionH2.innerText = episode.name + ' - ' + episodeVersion;
       lI.appendChild(episodeVersionH2); episodeList.appendChild(lI);
-      const search = document.getElementById('searchBox');
-      search.innerText = '';
-      search.disabled='true'
+      
     }
   })
 
@@ -83,5 +78,11 @@ export default function createEpisodeCard(allEpisodes) {
 
     // targeting root element in the DOM
 
-    rootEl.appendChild(episodeList);
+  rootEl.appendChild(episodeList);
+  // let countrootEle = document.getElementById('root');
+  // let len = Array.from(countrootEle).length;
+  // if (len === allEpisodes.length) { const search = document.getElementById('searchBox');
+  //     search.innerText = '';
+  //     search.disabled='true'}
+
 }

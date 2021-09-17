@@ -188,7 +188,7 @@ async function setup() {
 
     createEpisodeCard(allEpisodes); //single episode card for available / matched episode
     createOptions(allEpisodes);
-    showOptions(allAvailableShows); //available episodes in the selection
+    //showOptions(allAvailableShows); //available episodes in the selection
     
     
         // const tag = document.getElementById('linkTag');

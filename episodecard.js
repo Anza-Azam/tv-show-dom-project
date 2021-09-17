@@ -79,10 +79,5 @@ export default function createEpisodeCard(allEpisodes) {
     // targeting root element in the DOM
 
   rootEl.appendChild(episodeList);
-  // let countrootEle = document.getElementById('root');
-  // let len = Array.from(countrootEle).length;
-  // if (len === allEpisodes.length) { const search = document.getElementById('searchBox');
-  //     search.innerText = '';
-  //     search.disabled='true'}
-
+  
 }

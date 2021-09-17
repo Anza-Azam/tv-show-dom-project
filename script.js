@@ -307,11 +307,7 @@ async function selectShows(e) {
 
     userSelectedShow = e.target.value;
 
-     
-
-  
-
-   
+       
     allShowEpisodes = await getAllEpisodes2();
    // allEpisodes = episodesArray;
     allEpisodes = allShowEpisodes.map(episode => episode)
@@ -322,11 +318,11 @@ async function selectShows(e) {
     //createEpisodeCard(selected);
     const options = document.querySelector('.select');
     removeAllChildNodes(options);
-    const showOption= document.getElementById('shows');
-    removeAllChildNodes(showOption);
+    //const showOption= document.getElementById('shows');
+   // removeAllChildNodes(showOption);
     createEpisodeCard(allEpisodes); //single episode card for available / matched episode
     createOptions(allEpisodes);
-    showOptions(allAvailableShows); //available episodes in the selection
+   // showOptions(allAvailableShows); //available episodes in the selection
     
     
 }

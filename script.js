@@ -8,30 +8,47 @@ let allEpisodes = [];
 let allAvailableShows = []
 let userSelectedShow = "";
 
-
 async function getAllEpisodes() {
-    let e= document.getElementById('shows');
-   // let nme= e.options[e.selectedIndex].text;
+    const response = await fetch("https://api.tvmaze.com/shows/82/episodes")
+    const data = await response.json()
+    return data
+}
+
+if(!localStorage.getItem("episodes")) {
+    getAllEpisodes()
+        .then(data => 
+            localStorage.setItem("episodes", JSON.stringify(data))
+        )
+}
+
+const episodesString = localStorage.getItem("episodes")
+const episodesArray = JSON.parse(episodesString)
+//console.log(episodesArray);
+
+// async function getAllEpisodes() {
+//     let e= document.getElementById('shows');
+//    // let nme= e.options[e.selectedIndex].text;
     
-    allAvailableShows = getAllShows();
-    console.log(userSelectedShow)
-    //let element= allAvailableShows.find(ele=>ele.name===nme)
-    //id = element.id;
-    let url = `https://api.tvmaze.com/shows/82/episodes`;
-    let res = fetch(url).then(res => res.json()).catch(error => console.log(error))
-    return res;
+//     allAvailableShows = getAllShows();
+//     console.log(userSelectedShow)
+//     //let element= allAvailableShows.find(ele=>ele.name===nme)
+//     //id = element.id;
+//     let url = `https://api.tvmaze.com/shows/82/episodes`;
+//     let res = fetch(url).then(res => res.json()).catch(error => console.log(error))
+//     return res;
   
 
         
-}
+// }
     
 
 //Setup
 async function setup() {
    
-    allShowEpisodes = await getAllEpisodes();
-   // allAvailableShows =await  getAllShows();
-    allEpisodes = allShowEpisodes.map(episode => episode)
+    //allShowEpisodes = await getAllEpisodes();
+    allEpisodes = episodesArray;
+    allAvailableShows =getAllShows();
+    ////allEpisodes = allShowEpisodes.map(episode => episode)
     //console.log(allEpisodes)
     //console.log(allEpisodes.length);
      makePageForEpisodes(); // initial page for all episodes
@@ -156,7 +173,7 @@ async function setup() {
     //button event to display all episodes
      button.addEventListener('click', async () => {
          allShowEpisodes = await getAllEpisodes2();
-  
+       //  allEpisodes = episodesArray;
     allEpisodes = allShowEpisodes.map(episode => episode)
     console.log(allEpisodes.length)
     const screen = document.getElementById('root');
@@ -208,9 +225,12 @@ function showOptions(episodeList) {
 );
     episodeList.forEach((episode) => {
         const option = document.createElement('option');
-        option.value = `${episode.name}`;
-        option.innerText = `${episode.name}`;
-        selectOptions.appendChild(option);
+        if (/[^a-zA-Z]/.test(episode.name)) {
+            option.value = `${episode.name}`;
+           // console.log(episode.name);
+            option.innerText = `${episode.name}`;
+            selectOptions.appendChild(option);
+        }
     });
 }
 //search event listener's call back function
@@ -258,13 +278,17 @@ async function getAllEpisodes2() {
    // let e= document.getElementById('shows');
    // let nme= e.options[e.selectedIndex].text;
     let id;
+    
     allAvailableShows = getAllShows();
     console.log(userSelectedShow)
-    let element= allAvailableShows.find(ele=>ele.name===userSelectedShow)
-    id = element.id;
+    let element = allAvailableShows.find(ele => ele.name === userSelectedShow)
+    if (element !== undefined) {
+        id = element.id;
+    }
+    else (id=82)
     console.log(id)
     let url = `https://api.tvmaze.com/shows/${id}/episodes`;
-    let res = fetch(url).then(res => res.json()).catch(error => console.log(error))
+    let res = fetch(url).then(res => res.json()).catch(error => console.log("connection Failed", error))
     return res;
   
 
@@ -280,7 +304,7 @@ async function selectShows(e) {
 
    
     allShowEpisodes = await getAllEpisodes2();
-  
+   // allEpisodes = episodesArray;
     allEpisodes = allShowEpisodes.map(episode => episode)
     console.log(allEpisodes.length)
     const screen = document.getElementById('root');

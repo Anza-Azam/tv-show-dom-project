@@ -37,7 +37,7 @@ export default function createEpisodeCard(allEpisodes) {
           summary = episode.summary.substring(3, episode.summary.length - 4), // removed summary tags that each episode had in summary
           image = episode.image.medium;
 
-    
+     
       
 
         const formattedSeason = ('' + season).padStart(2, '0'); //type coersion
@@ -70,7 +70,10 @@ export default function createEpisodeCard(allEpisodes) {
     else {
       lI.innerText = 'Sorry, episode Image/Summary is not available';
        episodeVersionH2.innerText = episode.name + ' - ' + episodeVersion;
-      lI.appendChild(episodeVersionH2); episodeList.appendChild(lI) }
+      lI.appendChild(episodeVersionH2); episodeList.appendChild(lI);
+      const search= document.getElementById('searchBox')
+      search.disabled='true'
+    }
   })
 
     const rootEl = document.getElementById('root');

@@ -131,7 +131,10 @@ async function setup() {
     searchLabel.innerText = "Search Episode";
     search.type = 'text';
     search.placeholder = 'Enter key word';
-search.id='searchBox'
+     search.id = 'searchBox'
+     //const searchbox = document.getElementById('searchBox')
+      search.removeAttribute('disabled')
+      
     searchContainer.classList.add('inputs');
     searchContainer.append(searchLabel, search, displayNumbers);
     document.body.insertBefore(searchContainer, rootElem);

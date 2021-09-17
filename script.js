@@ -194,8 +194,8 @@ async function setup() {
         // tag.click();
     });
     searchContainer.addEventListener('input', searchList);//event listener search
-     select.addEventListener('change', selectList);//event listener select 
-     showNames.addEventListener('change', selectShows);
+     select.addEventListener('click', selectList);//event listener select 
+     showNames.addEventListener('click', selectShows);
      
 }
 

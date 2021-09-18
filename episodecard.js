@@ -44,12 +44,9 @@ export default function createEpisodeCard (allEpisodes) {
         const episodeSummary = document.createElement('p') //episode summary
         episodeSummary.classList.add('summary')
         episodeSummary.innerText = summary
-       
-
         lI.appendChild(episodeVersionH2)
         lI.appendChild(imageContainer)
         lI.appendChild(episodeSummary)
-
         episodeList.appendChild(lI) // appended li to ul element
       }
     } else {

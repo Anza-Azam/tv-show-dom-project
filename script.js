@@ -96,7 +96,8 @@ function makePageForEpisodes () {
     const screen = document.getElementById('root')
     const list = document.querySelector('.main')
     screen.removeChild(list)
-    
+    const display = document.getElementById('display')
+    display.innerText=''
     const options = document.querySelector('.select')
     removeAllChildNodes(options)
 

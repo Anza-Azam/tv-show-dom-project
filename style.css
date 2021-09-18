@@ -80,7 +80,8 @@ a {
 }
 .button {
   padding: 10px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  border-radius: 10px;
   background-color: burlywood;
   color: 'red';
 }
@@ -106,7 +107,7 @@ a {
   display: flex;
   margin:10px;
   flex-wrap: wrap;
-  flex-shrink: inherit;
+  /* flex-shrink: inherit; */
   flex-direction: column;
   justify-content:center;
   justify-items: center;

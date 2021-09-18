@@ -90,7 +90,16 @@ function makePageForEpisodes () {
   footer.appendChild(link)
   //button event to display all episodes
   button.addEventListener('click', async () => {
-    allShowEpisodes = await getAllEpisodesFetched()
+
+     
+let totalEpisodes = await getAllEpisodesFetched();
+let completeEpisodes = totalEpisodes.filter((episode) => {
+  if (episode.image !== null && episode.summary !== null) {
+    return episode;
+  }
+});
+    allShowEpisodes = completeEpisodes;
+   // allShowEpisodes = await getAllEpisodesFetched()
     allEpisodes = allShowEpisodes.map(episode => episode)
    
     const screen = document.getElementById('root')
@@ -147,6 +156,9 @@ function showOptions (episodeList) {
   })
 }
 //search event listener's call back function
+ 
+
+ 
 async function searchList (e) {
   const screen = document.getElementById('root')
   const list = document.querySelector('.main')
@@ -154,9 +166,14 @@ async function searchList (e) {
   const displayNumbers = document.getElementById('display')
   const options = document.querySelector('.select')
   removeAllChildNodes(options)
-
-
-  const userInput = e.target.value.toLowerCase()
+   const userInput = e.target.value.toLowerCase()
+let totalEpisodes = await getAllEpisodesFetched();
+let completeEpisodes = totalEpisodes.filter((episode) => {
+  if (episode.image !== null && episode.summary !== null) {
+    return episode;
+  }
+});
+    
   const allMatchedEpisodes = allEpisodes.filter(episode => {
     if (episode.image !== null && episode.summary !== null) {
       if (
@@ -166,7 +183,7 @@ async function searchList (e) {
         return episode
     }
   })
-  displayNumbers.innerText = `displaying ${allMatchedEpisodes.length} / ${allEpisodes.length}`
+  displayNumbers.innerText = `displaying ${allMatchedEpisodes.length} / ${completeEpisodes.length} episodes`
   createEpisodeCard(allMatchedEpisodes)
   createOptions(allMatchedEpisodes)
 }
@@ -216,7 +233,15 @@ async function selectShows (e) {
   displayNumbers.innerText = ''
   const inputBox = document.getElementById('searchBox')
   inputBox.value = ''
-  allShowEpisodes = await getAllEpisodesFetched()
+   
+let totalEpisodes = await getAllEpisodesFetched();
+let completeEpisodes = totalEpisodes.filter((episode) => {
+  if (episode.image !== null && episode.summary !== null) {
+    return episode;
+  }
+});
+  allShowEpisodes = completeEpisodes;
+  //allShowEpisodes = await getAllEpisodesFetched()
   allEpisodes = allShowEpisodes.map(episode => episode)
   const screen = document.getElementById('root')
   const list = document.querySelector('.main')

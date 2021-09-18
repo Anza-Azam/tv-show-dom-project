@@ -7,19 +7,9 @@ export default function createEpisodeCard (allEpisodes) {
   allEpisodes.forEach(episode => {
     //for each episode a li card is created
     const lI = document.createElement('li')
-    const episodeVersionH2 = document.createElement('h2') // episode heading
-    const season = episode.season,
-      number = episode.number
-
-    const formattedSeason = ('' + season).padStart(2, '0') //type coersion
-    const formattedNumber = ('' + number).padStart(2, '0') //type coersion
-    const episodeVersion = `S${formattedSeason}E${formattedNumber}` //full version to present
-
-    episodeVersionH2.innerText = name + ' - ' + episodeVersion
-    //let episodeVersionH2;
+    
     lI.className = 'episode-card'
-    if (episode.image !== null) {
-      if (episode.summary !== null) {
+    
         const name = episode.name,
           //individual episode data
           season = episode.season,
@@ -48,13 +38,7 @@ export default function createEpisodeCard (allEpisodes) {
         lI.appendChild(imageContainer)
         lI.appendChild(episodeSummary)
         episodeList.appendChild(lI) // appended li to ul element
-      }
-    } else {
-      lI.innerText = 'Sorry, episode is not available'
-      episodeVersionH2.innerText = episode.name + ' - ' + episodeVersion
-      lI.appendChild(episodeVersionH2)
-      episodeList.appendChild(lI)
-    }
+      
   })
 
   const rootEl = document.getElementById('root')

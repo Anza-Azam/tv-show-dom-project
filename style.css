@@ -1,242 +1,207 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	font-size: 10px;
-	margin: 0;
-	padding: 0;
-	height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 html {
-	margin: 0;
-	height: 100%;
+    margin : 0;
+    height : 100%;
+}
+
+
+body {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 @viewport {
-	width: 100%; /*Sets the width of the actual viewport to the device width*/
+  width: 100%; /*Sets the width of the actual viewport to the device width*/
 }
-a{padding-left: 10px;}
+a {
+  padding-left: 10px;
+}
 #root {
-	margin: 0 auto;
+  margin: 0 auto;
 
-	width: 80%;
+  width: 80%;
 }
 
 .header {
-	color: rgb(1, 1, 12);
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	text-align: center;
-
-	background-color: rgb(199, 185, 179);
-
-	padding: 10px;
-
-	font-family: 'Luckiest Guy', cursive;
-
-	animation: pulse 5s infinite;
-
-	font-size: 3em;
-	width: 100%;
+  color: rgb(1, 1, 12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(199, 185, 179);
+  padding: 10px;
+  font-family: 'Luckiest Guy', cursive;
+  animation: pulse 5s infinite;
+  font-size: 3em;
+  width: 100%;
 }
-.inputs{
-	display:flex;
- justify-content: center;
-font-size: 2rem;
-	min-width: 200px;
-	min-height:50px;
-	margin-top:1rem;
+.inputs {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  min-width: 200px;
+  min-height: 50px;
+  margin-top: 1rem;
 }
-.inputs > p{ padding-left:20px;
-	
+.inputs > p {
+  padding-left: 20px;
+  font-size: 1rem;
 }
+
 .footer {
-	color: blue;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	text-align: center;
-
-	background-color: rgb(247, 243, 242);
-
-	padding: 10px;
-
-	font-family: 'Luckiest Guy', cursive;
-
-	animation: pulse 5s infinite;
-
-	font-size: 3em;
+  color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(247, 243, 242);
+  padding: 10px;
+  font-family: 'Luckiest Guy', cursive;
+  animation: pulse 5s infinite;
+  font-size: 3em;
 }
 
 @keyframes pulse {
-	0% {
-		background-color: #9ca0a3;
+  0% {
+    background-color: #9ca0a3;
+    color: rgb(12, 5, 2);
+  }
 
-		color: rgb(12, 5, 2);
-	}
-
-	100% {
-		color: rgb(16, 56, 175);
-
-		background-color: #f1ecec;
-	}
+  100% {
+    color: rgb(16, 56, 175);
+    background-color: #f1ecec;
+  }
 }
-.button{
-
-	padding: 10px;
-	margin-left:10px;
-	
-	
-	background-color: burlywood;
-	color:'red';
-
-
+.button {
+  padding: 10px;
+  margin-left: 10px;
+  background-color: burlywood;
+  color: 'red';
 }
 .main {
-	display: grid;
-	grid-auto-rows: auto;
-	grid-template-rows: auto;
-	grid-row-gap: 10px;
-
-	color: rgb(8, 0, 0);
-
-	margin: 0 auto;
-	justify-content: center;
-
-	font-size: 10px;
-	padding: 10px;
-}
-.inputs > p{font-size:1rem;}
-/* showstyles*/
-.selection{
-	display:flex;
-	margin-top:1rem;
-	justify-content:center;
-	
-
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-rows: auto;
+  grid-row-gap: 10px;
+  color: rgb(8, 0, 0);
+  margin: 0 auto;
+  justify-content: center;
+  font-size: 10px;
+  padding: 10px;
 }
 
-.episode-card{
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	align-content: center;
-	justify-content: flex-start;
 
-	border: 5px solid rgba(20, 5, 5, 0.115);
-	border-radius: 10px;
-margin-left:50px;
-	flex-wrap: wrap;
-	font-size: 1rem;
+.selection {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.episode-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  border: 5px solid rgba(20, 5, 5, 0.115);
+  border-radius: 10px;
+  margin-left: 50px;
+  flex-wrap: wrap;
+  font-size: 1rem;
 }
 img {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
-.episode-card> h2 {
-	border: 5px solid black;
-	border-radius: 20px;
-	display: flex;
-	font-weight:bolder;
-    font-weight:bolder;
-	justify-content: center;
-	text-align: center;
-	width: 100%;
+.episode-card > h2 {
+  border: 5px solid black;
+  border-radius: 20px;
+  display: flex;
+  font-weight: bolder;
+  font-weight: bolder;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
-.label{
-	margin-right:10px;
-	font-size: 1rem;
-	border-radius: 2px;
-	border: 2px solid black;
-background-color: rgb(133, 138, 73);
-text-align: center;
-padding:10px;
-display: flex;
-color:black;
+.label {
+  margin-right: 10px;
+  font-size: 1rem;
+  border-radius: 2px;
+  border: 2px solid black;
+  background-color: rgb(133, 138, 73);
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  color: black;
 }
 
 .episode-name {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-
-	justify-content: flex-start;
-
-	text-align: center;
-
-	padding: 20px;
-
-	margin: 0 auto;
-
-	font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
 }
 
-li{list-style: none;}
+li {
+  list-style: none;
+}
 .summary {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-
-	justify-content: flex-start;
-
-	text-align: center;
-
-	padding: 20px;
-
-	margin: 0 auto;
-
-	font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
 }
 
-.image-container{
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-
-	justify-content: flex-start;
-
-	text-align: center;
-
-	padding: 20px;
-
-	margin: 0 auto;
-
-	font-size: 1rem;
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
 }
-
 
 /* Medium devices (landscape tablets, 768px and up) */
 
 @media only screen and (min-width: 768px) {
-	* {
-		margin: 0;
-		padding: 0;
-	}
-	.main {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-columns: repeat(auto-fill, 30%);
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin : 0 auto;
+}
 
-		width: 100%;
-		grid-gap: 10px;
-		font-size: 6px;
-		color: black;
-	}
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, 30%);
+    width: 100%;
+    grid-gap: 10px;
+    font-size: 6px;
+    color: black;
+}
 
-	.root {
-		margin: 0 auto;
-	}
+.root {
+    margin: 0 auto;
+}
 
-	body {
-		margin: 0 auto;
-	}
+  
 }

@@ -18,14 +18,17 @@ async function getAllEpisodes() {
   console.log(names, "---");
 let id;
   let element = allAvailableShows.find((ele) => ele.name === names);
-  //if (element !== undefined) {
+  if (element !== undefined) {
     id = element.id;
     console.log(id);
-  
+  }
   
   const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`)
   const data = await response.json()
-  return data
+  if (data.image !== null && data.summary !== null) {
+    return data;
+  }
+  //return data
 }
 // if (!localStorage.getItem('episodes')) {
 //   getAllEpisodes().then(data =>
@@ -40,12 +43,19 @@ let id;
 //Setup
 async function setup () {
   allEpisodes = await getAllEpisodes();
+   
+//let totalEpisodes = await getAllEpisodesFetched();
+let completeEpisodes = allEpisodes.filter((episode) => {
+  if (episode.image !== null && episode.summary !== null) {
+    return episode;
+  }
+});
   //allEpisodes = episodesArray //all episodes
  // console.log(allEpisodes)
   allAvailableShows = getAllShows() //all shows
   makePageForEpisodes() // initial page for all episodes
-  createEpisodeCard(allEpisodes) //single episode card for available / matched episode
-  createOptions(allEpisodes) //load episodes in select
+  createEpisodeCard(completeEpisodes) //single episode card for available / matched episode
+  createOptions(completeEpisodes) //load episodes in select
   showOptions(allAvailableShows) //load shows in select
 }
 

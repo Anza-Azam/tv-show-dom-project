@@ -102,7 +102,7 @@ section {
   height: 50px;
   flex-wrap: wrap;
 }
-h2 {
+a {
   font-size: 6em;
 }
 .selection {

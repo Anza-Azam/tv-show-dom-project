@@ -7,6 +7,12 @@ let allEpisodes = []
 let allAvailableShows = []
 let userSelectedShow = ''
 //first show for local storage
+
+let names = localStorage.getItem('showname');
+console.log(names,'---');
+localStorage.removeItem('showname')
+
+
 async function getAllEpisodes () {
   const response = await fetch('https://api.tvmaze.com/shows/82/episodes')
   const data = await response.json()

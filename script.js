@@ -98,7 +98,11 @@ function makePageForEpisodes () {
   button.style.display = 'none'
   button.classList.add('button')
   button.innerText = 'Show all Episodes'
-  selectContainer.append(selectLabel, select, selectLabelOptions, showNames, button)
+  const buttonShows = document.createElement("button");
+  //buttonShows.style.display = "none";
+  buttonShows.classList.add("button");
+  buttonShows.innerText = "Present all Shows";
+  selectContainer.append(selectLabel, select, selectLabelOptions, showNames, button,buttonShows)
 
   document.body.insertBefore(selectContainer, searchContainer) //select and search appended to the body
   selectContainer.classList.add('selection')

@@ -8,29 +8,40 @@ let allAvailableShows = []
 let userSelectedShow = ''
 //first show for local storage
 
-let names = localStorage.getItem('showname');
-console.log(names,'---');
-localStorage.removeItem('showname')
 
+//localStorage.removeItem('showname')
 
-async function getAllEpisodes () {
-  const response = await fetch('https://api.tvmaze.com/shows/82/episodes')
+allAvailableShows=getAllShows()
+
+async function getAllEpisodes() {
+  let names = localStorage.getItem("showname");
+  console.log(names, "---");
+let id;
+  let element = allAvailableShows.find((ele) => ele.name === names);
+  //if (element !== undefined) {
+    id = element.id;
+    console.log(id);
+  
+  
+  const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`)
   const data = await response.json()
   return data
 }
-if (!localStorage.getItem('episodes')) {
-  getAllEpisodes().then(data =>
-    localStorage.setItem('episodes', JSON.stringify(data))
-  )
-}
+// if (!localStorage.getItem('episodes')) {
+//   getAllEpisodes().then(data =>
+//     localStorage.setItem('episodes', JSON.stringify(data))
+//   )
+//}
 
-const episodesString = localStorage.getItem('episodes')
-const episodesArray = JSON.parse(episodesString)
-
+//const episodesString = localStorage.getItem('episodes')
+//const episodesArray = await getAllEpisodes();
+  //JSON.parse(episodesString)
+//console.log(episodesArray)
 //Setup
 async function setup () {
-  
-  allEpisodes = episodesArray //all episodes
+  allEpisodes = await getAllEpisodes();
+  //allEpisodes = episodesArray //all episodes
+ // console.log(allEpisodes)
   allAvailableShows = getAllShows() //all shows
   makePageForEpisodes() // initial page for all episodes
   createEpisodeCard(allEpisodes) //single episode card for available / matched episode

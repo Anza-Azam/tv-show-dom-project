@@ -11,7 +11,79 @@ function setup() {
   createShowCard(allCompleteShows); //single episode card for available / matched episode
  // createOptions(allAvailableShows); //load episodes in select
   //showOptions(allAvailableShows); //load shows in select
+  showOptions(allCompleteShows)
 }
+
+
+function showOptions(episodeList) {
+  const selectOptions = document.getElementById("shows");
+  episodeList = episodeList.sort((a, b) => {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+    return 0;
+  });
+  episodeList.forEach((episode) => {
+    const option = document.createElement("option");
+
+    option.value = `${episode.name}`;
+
+    option.innerText = `${episode.name}`;
+    selectOptions.appendChild(option);
+  });
+}
+
+
+ function searchList(e) {
+  const screen = document.getElementById("root");
+   const list = document.querySelector(".main");
+   document.body.removeChild(screen);
+  //  const divs = document.querySelectorAll(".namediv");
+  //  removeAllChild(list);
+  //  const a= document.querySelectorAll('.a')
+  // divs.removeChild(a);
+  const displayNumbers = document.getElementById("display");
+  const options = document.querySelector(".select");
+  removeAllChildNodes(options);
+  const userInput = e.target.value.toLowerCase();
+  //let totalEpisodes = await getAllEpisodesFetched();
+  allAvailableShows = getAllShows(); //all shows
+  //makePageForShows(); // initial page for all episodes
+  //console.log(allAvailableShows);
+  allCompleteShows = allAvailableShows.filter((shows) => shows.image !== null);
+  // let completeEpisodes = allCompleteShows.filter((episode) => {
+  //   if (episode.image !== null && episode.summary !== null) {
+  //     return episode;
+  //   }
+  // });
+
+  const allMatchedEpisodes =allCompleteShows.filter((episode) => {
+    if (episode.image !== null && episode.summary !== null) {
+      if (
+        episode.name.toLowerCase().includes(userInput) ||
+        episode.summary.toLowerCase().includes(userInput)
+      )
+        return episode;
+    }
+  });
+ 
+  //displayNumbers.innerText = `displaying ${allMatchedEpisodes.length} / ${completeEpisodes.length} episodes`;
+  createShowCard(allMatchedEpisodes);
+  createOptions(allMatchedEpisodes);
+ }
+
+ function createOptions(episodeList) {
+   const selectOptions = document.querySelector("select");
+   const search = document.getElementById("searchBox");
+   search.innerText = "";
+   episodeList.forEach((episode) => {
+     const option = document.createElement("option");
+     option.value = episode.name
+     
+     option.innerText = episode.name
+     
+     selectOptions.appendChild(option);
+   });
+ }
 function makePageForShows() {
     const rootElem = document.getElementById('root') //root div with ul
     const header = document.createElement('header')
@@ -36,6 +108,7 @@ function makePageForShows() {
     //const selectLabel = document.createElement('label')
     //selectLabel.innerText = 'Select Episode'
     //selectLabel.classList.add('label')
+  searchContainer.addEventListener('input',searchList)
     const selectLabelOptions = document.createElement('label')
     selectLabelOptions.innerText = 'Select Show'
     selectLabelOptions.classList.add('label')
@@ -70,5 +143,15 @@ function makePageForShows() {
     document.body.appendChild(footer)
     footer.appendChild(site)
     footer.appendChild(link)
+}
+
+
+
+
+//remove options dynamically
+function removeAllChildNodes (parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild)
+  }
 }
 window.onload = setup;

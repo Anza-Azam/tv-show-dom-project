@@ -2,8 +2,9 @@
 //name, image, summary, genres, status, rating, and runtime
 export default function createShowCard(allShows) {
    // Episode list
-
-  const rootEl = document.getElementById("root");
+  const rootEl = document.createElement("div");
+  rootEl.id = "root";
+  //const rootEl = document.getElementById("root");
 
   //main class attached to list
   allShows.forEach((show) => {
@@ -29,8 +30,11 @@ export default function createShowCard(allShows) {
       showName.innerText = name;
       showName.href = 'index2.html';
       showName.target = "_self";
-      showName.onclick = setShow();
-      const nameDiv = document.createElement('div')
+    showName.onclick = setShow();
+    
+    const nameDiv = document.createElement('div')
+    nameDiv.classList.add('namediv')
+    showName.classList.add('a')
       nameDiv.appendChild(showName)
       const contentDiv = document.createElement('div')
       
@@ -76,8 +80,8 @@ export default function createShowCard(allShows) {
         localStorage.setItem("showname",showName.innerText);
       }
   });
-    
-  // targeting root element in the DOM
-
   
+  // targeting root element in the DOM
+const footer = document.querySelector(".footer");
+  document.body.insertBefore(rootEl,footer)
 }

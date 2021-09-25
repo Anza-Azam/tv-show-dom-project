@@ -56,13 +56,19 @@ function showOptions(episodeList) {
   //   }
   // });
 
-  const allMatchedEpisodes =allCompleteShows.filter((episode) => {
+   const allMatchedEpisodes = allCompleteShows.filter((episode) => {
+   let a= episode.genres.filter((show) =>  show.toLowerCase()===(userInput))
     if (episode.image !== null && episode.summary !== null) {
       if (
         episode.name.toLowerCase().includes(userInput) ||
-        episode.summary.toLowerCase().includes(userInput)
-      )
+        episode.summary.toLowerCase().includes(userInput) ||
+        a.length>0
+      
+      ) {
+        console.log(episode.genres)
         return episode;
+      }
+      
     }
   });
  

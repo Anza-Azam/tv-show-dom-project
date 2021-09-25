@@ -254,8 +254,7 @@ async function getAllEpisodesFetched () {
     id = element.id
   } else {
     let names = localStorage.getItem("showname");
-    //console.log(names, "---");
-   // let id;
+   
     let element = allAvailableShows.find((ele) => ele.name === names);
     if (element !== undefined) {
       id = element.id;

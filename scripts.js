@@ -49,7 +49,7 @@ function showOptions(episodeList) {
   allAvailableShows = getAllShows(); //all shows
   //makePageForShows(); // initial page for all episodes
   //console.log(allAvailableShows);
-  allCompleteShows = allAvailableShows.filter((shows) => shows.image !== null);
+  // allCompleteShows = allAvailableShows.filter((shows) => shows.image !== null);
   // let completeEpisodes = allCompleteShows.filter((episode) => {
   //   if (episode.image !== null && episode.summary !== null) {
   //     return episode;
@@ -66,7 +66,7 @@ function showOptions(episodeList) {
     }
   });
  
-  //displayNumbers.innerText = `displaying ${allMatchedEpisodes.length} / ${completeEpisodes.length} episodes`;
+  displayNumbers.innerText = `found ${allMatchedEpisodes.length} Shows`;
   createShowCard(allMatchedEpisodes);
   createOptions(allMatchedEpisodes);
  }

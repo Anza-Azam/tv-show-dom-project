@@ -28,7 +28,7 @@ export default function createShowCard(allShows) {
     const showName = document.createElement("a"); // episode heading
       showName.innerText = name;
       showName.href = 'index2.html';
-      showName.target = "_blank";
+      showName.target = "_self";
       showName.onclick = setShow();
       const nameDiv = document.createElement('div')
       nameDiv.appendChild(showName)

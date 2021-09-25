@@ -98,10 +98,12 @@ function makePageForEpisodes () {
   button.style.display = 'none'
   button.classList.add('button')
   button.innerText = 'Show all Episodes'
-  const buttonShows = document.createElement("button");
+  const buttonShows = document.createElement("a");
   //buttonShows.style.display = "none";
   buttonShows.classList.add("button");
   buttonShows.innerText = "Present all Shows";
+  buttonShows.href = "index.html";
+  buttonShows.target = "_self";
   selectContainer.append(selectLabel, select, selectLabelOptions, showNames, button,buttonShows)
 
   document.body.insertBefore(selectContainer, searchContainer) //select and search appended to the body

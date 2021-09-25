@@ -98,7 +98,7 @@ function makePageForShows() {
     const search = document.createElement('input')
     const searchLabel = document.createElement('label')
     searchLabel.classList.add('label')
-    searchLabel.innerText = 'Search Episode'
+    searchLabel.innerText = 'Filtering for'
     search.type = 'text'
     search.placeholder = 'Enter key word'
     search.id = 'searchBox'
@@ -110,8 +110,8 @@ function makePageForShows() {
     //selectLabel.classList.add('label')
   searchContainer.addEventListener('input',searchList)
     const selectLabelOptions = document.createElement('label')
-    selectLabelOptions.innerText = 'Select Show'
-    selectLabelOptions.classList.add('label')
+    //selectLabelOptions.innerText = 'Select Show'
+   // selectLabelOptions.classList.add('label')
     const select = document.createElement('select')
     //select display for options of episodes available
     const showNames = document.createElement('select')

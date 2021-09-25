@@ -252,7 +252,17 @@ async function getAllEpisodesFetched () {
   let element = allAvailableShows.find(ele => ele.name === userSelectedShow)
   if (element !== undefined) {
     id = element.id
-  } else id = 82  
+  } else {
+    let names = localStorage.getItem("showname");
+    //console.log(names, "---");
+   // let id;
+    let element = allAvailableShows.find((ele) => ele.name === names);
+    if (element !== undefined) {
+      id = element.id;
+      console.log(id);
+    }
+  }
+    
   let url = `https://api.tvmaze.com/shows/${id}/episodes`
   let res = fetch(url)
     .then(res => res.json())

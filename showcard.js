@@ -8,10 +8,7 @@ export default function createShowCard(allShows) {
 
   //main class attached to list
   allShows.forEach((show) => {
-    //for each episode a li card is created
-   // const lI = document.createElement("li");
-
-    //lI.className = "show-card";
+   
       const showList = document.createElement("section");
        showList.classList.add("main");
     const name = show.name,

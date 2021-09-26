@@ -154,10 +154,15 @@ function setShow(e) {
   const sel = document.getElementById("sel");
   sel.appendChild(showName);
   //  showName.innerText = episode.name;
-  showName.href = "index2.html";
+  showName.href = "episodeindex.html";
   showName.target = "_self";
+  let jsarray = [e.target.value, e.target.value];
+  localStorage.setItem('test',e.target.value)
+  localStorage.setItem("showname", JSON.stringify(jsarray));
 
-  localStorage.setItem("showname", e.target.value);
+  // JSON.stringify(jsArray) converts the jsArray into a string which can be stored in sessionStorage
+
+  //localStorage.setItem("showname", e.target.value);
   showName.click();
 }
 window.onload = setup;

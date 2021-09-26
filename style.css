@@ -15,7 +15,19 @@ body {
   padding: 0;
   height: 100%;
 }
+a:link, a:visited {
+  /* background-color: #94666277; */
+  color: rgb(3, 2, 2);
+  padding: 14px 25px;
+  text-align: center;
+  font-size: 2em;
+  text-decoration: none;
+  /* display: inline-block; */
+}
 
+a:hover, a:active {
+  background-color: rgb(192, 94, 94);
+}
 @viewport {
   width: 100%; /*Sets the width of the actual viewport to the device width*/
 }
@@ -80,10 +92,12 @@ a {
 }
 .button {
   padding: 10px;
-  /* margin-left: 10px; */
   border-radius: 10px;
   background-color: burlywood;
   color: 'red';
+  border:2em;
+  font-size: 2rem;
+
 }
 .main {
   display: grid;
@@ -93,6 +107,7 @@ a {
   color: rgb(8, 0, 0);
   margin: 0 auto;
   justify-content: center;
+  justify-items: center;
   font-size: 10px;
   padding: 10px;
 }
@@ -121,7 +136,6 @@ a {
   justify-content: flex-start;
   border: 5px solid rgba(20, 5, 5, 0.115);
   border-radius: 10px;
-  margin-left: 50px;
   flex-wrap: wrap;
   font-size: 1rem;
 }

@@ -6,6 +6,7 @@ let allShowEpisodes = [];
 let allEpisodes = [];
 let allAvailableShows = [];
 let userSelectedShow = "";
+
 //first show for local storage
 
 //localStorage.removeItem('showname')
@@ -13,10 +14,12 @@ let userSelectedShow = "";
 allAvailableShows = getAllShows();
 
 async function getAllEpisodes() {
-  let names = localStorage.getItem("showname");
+  let jsarray = localStorage.getItem("showname");
+  let names = JSON.parse(jsarray);
+  // let names = localStorage.getItem("showname");
   console.log(names, "---");
   let id;
-  let element = allAvailableShows.find((ele) => ele.name === names);
+  let element = allAvailableShows.find((ele) => ele.name === names[0]);
   if (element !== undefined) {
     id = element.id;
     console.log(id);
@@ -43,6 +46,8 @@ async function getAllEpisodes() {
 async function setup() {
   allEpisodes = await getAllEpisodes();
 
+  
+
   //let totalEpisodes = await getAllEpisodesFetched();
   let completeEpisodes = allEpisodes.filter((episode) => {
     if (episode.image !== null && episode.summary !== null) {
@@ -56,6 +61,14 @@ async function setup() {
   createEpisodeCard(completeEpisodes); //single episode card for available / matched episode
   createOptions(completeEpisodes); //load episodes in select
   showOptions(allAvailableShows); //load shows in select
+
+  let arr = document.getElementById('shows')
+  arr.click();
+  //let names = localStorage.getItem("showname");
+  let jsarray = localStorage.getItem('showname')
+  let names = JSON.parse(jsarray);
+ // console.log(names[0], "---");
+
 }
 
 // header body and footer styling and data presentation
@@ -185,12 +198,21 @@ function showOptions(episodeList) {
   });
   episodeList.forEach((episode) => {
     const option = document.createElement("option");
+    
 
     option.value = `${episode.name}`;
 
     option.innerText = `${episode.name}`;
+    //  let names = localStorage.getItem("showname");
+    // console.log(names, "---");
+    
     selectOptions.appendChild(option);
   });
+
+  // const element = document.getElementById('shows')
+  //   var x = do.selectedIndex;
+  //   var y = dcument.getElementById("mySelect").options;
+
 }
 //search event listener's call back function
 
@@ -252,9 +274,10 @@ async function getAllEpisodesFetched() {
   if (element !== undefined) {
     id = element.id;
   } else {
-    let names = localStorage.getItem("showname");
-
-    let element = allAvailableShows.find((ele) => ele.name === names);
+  //  let names = localStorage.getItem("showname");
+ let jsarray = localStorage.getItem("showname");
+ let names = JSON.parse(jsarray);
+    let element = allAvailableShows.find((ele) => ele.name === names[0]);
     if (element !== undefined) {
       id = element.id;
       console.log(id);
@@ -267,9 +290,26 @@ async function getAllEpisodesFetched() {
     .catch((error) => console.log("connection Failed", error));
   return res;
 }
+
 //new show select
 async function selectShows(e) {
-  userSelectedShow = e.target.value;
+ 
+  let test = localStorage.getItem('test');
+  if (test) {
+    userSelectedShow = test;
+    localStorage.removeItem('test')
+    const element = document.getElementById('shows')
+    const arr = Array.from(element)
+    console.log(arr)
+    arr.filter((ele, index) => {
+      if (ele.value === test) {
+        console.log(arr[index].value)
+        arr[index].setAttribute("selected", "selected");
+      }
+    })
+    
+  }
+  else { userSelectedShow = e.target.value; }
   const displayNumbers = document.getElementById("display");
   displayNumbers.innerText = "";
   const inputBox = document.getElementById("searchBox");

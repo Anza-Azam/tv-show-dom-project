@@ -63,7 +63,7 @@ async function setup() {
   showOptions(allAvailableShows); //load shows in select
 
   let arr = document.getElementById('shows')
-  arr.click();
+  arr.click()
   //let names = localStorage.getItem("showname");
   let jsarray = localStorage.getItem('showname')
   let names = JSON.parse(jsarray);
@@ -164,7 +164,8 @@ function makePageForEpisodes() {
     createOptions(allEpisodes);
   });
   searchContainer.addEventListener("input", searchList); //event listener search
-  select.addEventListener("click", selectList); //event listener select
+  select.addEventListener("change", selectList); //event listener select
+  showNames.addEventListener("change", selectShows);
   showNames.addEventListener("click", selectShows);
 }
 

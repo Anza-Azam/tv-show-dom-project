@@ -14,7 +14,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+
 }
+.button{font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif}
 a:link, a:visited {
   /* background-color: #94666277; */
   color: rgb(3, 2, 2);
@@ -99,9 +101,8 @@ p{display:flex;flex-direction: column; text-align: justify; }
   border:2px black solid;
   color:black;
   display: flex;
-  
- justify-content: space-around;
-  font-size: 1rem;
+  justify-content: space-around;
+  font-size: 1.1rem;
 
 }
 .main {

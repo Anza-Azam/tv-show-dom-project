@@ -50,7 +50,7 @@ export default function createShowCard(allShows) {
     const showRuntime = document.createElement("p");//episode summary
       showSummary.classList.add("summary");
       
-      showSummary.innerText = summary;
+      showSummary.innerHTML = summary;
       showRating.innerText = `Rated: ${rating}`;
       showGenres.innerText = `Genres: ${genres}`;
       showStatus.innerText = `Status: ${status}`;

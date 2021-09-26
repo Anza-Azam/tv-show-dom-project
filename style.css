@@ -78,7 +78,7 @@ a {
   animation: pulse 5s infinite;
   font-size: 3em;
 }
-
+p{display:flex;flex-direction: column; text-align: justify; }
 @keyframes pulse {
   0% {
     background-color: #9ca0a3;
@@ -93,10 +93,11 @@ a {
 .button {
   padding: 10px;
   border-radius: 10px;
+  margin:2px;
   background-color: burlywood;
   color: 'red';
-  border:2em;
-  font-size: 2rem;
+  border:2px black solid;
+  font-size: 1rem;
 
 }
 .main {

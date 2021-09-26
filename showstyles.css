@@ -62,7 +62,7 @@ a:link, a:visited {
   font-size:2em;
   /* //display: inline-block; */
 }
-
+p{display:flex; flex-direction: column;}
 a:hover, a:active {
   background-color: rgb(192, 94, 94);}
 .footer {

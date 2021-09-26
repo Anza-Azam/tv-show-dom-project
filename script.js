@@ -63,7 +63,8 @@ async function setup() {
   showOptions(allAvailableShows); //load shows in select
 
   let arr = document.getElementById('shows')
-  arr.click()
+  //arr.click()
+  arr.dispatchEvent(new Event("change"));
   //let names = localStorage.getItem("showname");
   let jsarray = localStorage.getItem('showname')
   let names = JSON.parse(jsarray);

@@ -86,8 +86,10 @@ h2 {
   color: "red";
 }
 .summary {
-  width: 80%;
+  /* //width: 80%; */
   display: flex;
+  text-justify:inherit;
+  text-align: justify;
   justify-items: center;
 }
 section {
@@ -191,7 +193,7 @@ img {
     width: 60rem;
     padding: 10px;
 
-    text-align: center;
+    text-align: justify;
     display: flex;
     justify-content: center;
     justify-items: center;

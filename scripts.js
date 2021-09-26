@@ -83,10 +83,10 @@ function showOptions(episodeList) {
    search.innerText = "";
    episodeList.forEach((episode) => {
      const option = document.createElement("option");
-     option.value = episode.name
      
-     option.innerText = episode.name
-     
+     // showName.onclick = setShow();
+     option.innerHTML =episode.name;
+     option.value = episode.name;
      selectOptions.appendChild(option);
    });
  }
@@ -124,17 +124,19 @@ function makePageForShows() {
     showNames.classList.add('select')
     showNames.id = 'shows'
     select.classList.add('select')
-    const selectContainer = document.createElement('div')
-    const button = document.createElement('button')
-    button.style.display = 'none'
-    button.classList.add('button')
-    button.innerText = 'Show all Episodes'
+  const selectContainer = document.createElement('div')
+  selectContainer.id = 'sel';
+    // const button = document.createElement('button')
+    // button.style.display = 'none'
+    // button.classList.add('button')
+    // button.innerText = 'Show all Episodes'
      const footer = document.createElement("footer");
      footer.classList.add("footer");
-    selectContainer.append(selectLabelOptions, showNames, button)
+    selectContainer.append(selectLabelOptions, showNames)
 
    // document.body.appendChild(searchContainer); //select and search appended to the body
-    document.body.insertBefore(selectContainer,rootElem)
+  document.body.insertBefore(selectContainer, rootElem)
+  showNames.addEventListener('change', setShow);
     selectContainer.classList.add('selection')
     //const footer = document.createElement('footer')
     //footer.classList.add('footer')
@@ -160,4 +162,17 @@ function removeAllChildNodes (parent) {
     parent.removeChild(parent.firstChild)
   }
 }
+
+function setShow(e) {
+  const showName = document.createElement("a");
+  showName.display = 'none';
+  const sel = document.getElementById('sel')
+  sel.appendChild(showName)
+  //  showName.innerText = episode.name;
+   showName.href = "index2.html";
+  showName.target = "_self";
+  
+  localStorage.setItem("showname", e.target.value);
+  showName.click();
+ }
 window.onload = setup;

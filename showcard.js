@@ -23,16 +23,17 @@ export default function createShowCard(allShows) {
     
     //const episodeVersion = `S${formattedSeason}E${formattedNumber}`; //full version to present
 
-    const showName = document.createElement("a"); // episode heading
+    const showName = document.createElement("h2"); // episode heading
       showName.innerText = name;
-      showName.href = 'index2.html';
-      showName.target = "_self";
-    showName.onclick = setShow();
+    //   showName.href = 'index2.html';
+    //   showName.target = "_self";
+    // showName.onclick = setShow();
     
     const nameDiv = document.createElement('div')
     nameDiv.classList.add('namediv')
-    showName.classList.add('a')
-      nameDiv.appendChild(showName)
+    
+    //showName.classList.add('a')
+     nameDiv.appendChild(showName)
       const contentDiv = document.createElement('div')
       
     const imageContainer = document.createElement("div"); // episode image
@@ -71,11 +72,8 @@ export default function createShowCard(allShows) {
       showList.appendChild(showInfo)
       rootEl.appendChild(nameDiv)
       rootEl.appendChild(showList);
-      showName.addEventListener('click', setShow);
-      function setShow() {
-         
-        localStorage.setItem("showname",showName.innerText);
-      }
+     // showName.addEventListener('click', setShow);
+     
   });
   
   // targeting root element in the DOM

@@ -1,5 +1,6 @@
 //import episode card to render the data
 import createEpisodeCard from "./episodecard.js";
+//import all shows
 import getAllShows from "./shows.js";
 
 let allShowEpisodes = [];
@@ -7,74 +8,41 @@ let allEpisodes = [];
 let allAvailableShows = [];
 let userSelectedShow = "";
 
-//first show for local storage
-
-//localStorage.removeItem('showname')
-
 allAvailableShows = getAllShows();
-
+//display episodes
 async function getAllEpisodes() {
-  let jsarray = localStorage.getItem("showname");
-  let names = JSON.parse(jsarray);
-  // let names = localStorage.getItem("showname");
-  console.log(names, "---");
+  let names = localStorage.getItem("showname");
   let id;
-  let element = allAvailableShows.find((ele) => ele.name === names[0]);
-  if (element !== undefined) {
-    id = element.id;
-    console.log(id);
+  let shows = allAvailableShows.find((show) => show.name === names);
+  if (shows !== undefined) {
+    id = shows.id;
   }
 
   const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
   const data = await response.json();
-  
-  let a = data.filter(d => {
-    if (d.summary !== '' && d.image !== null) {
-      return d.summary !== '' }
-  });
-   return a;
-    
-  
-  //return data
-}
-// if (!localStorage.getItem('episodes')) {
-//   getAllEpisodes().then(data =>
-//     localStorage.setItem('episodes', JSON.stringify(data))
-//   )
-//}
 
-//const episodesString = localStorage.getItem('episodes')
-//const episodesArray = await getAllEpisodes();
-//JSON.parse(episodesString)
-//console.log(episodesArray)
+  let episodes = data.filter(
+    (episodes) => episodes.summary !== "" && episodes.image !== null
+  );
+  return episodes;
+}
+
 //Setup
 async function setup() {
   allEpisodes = await getAllEpisodes();
-
-  
-
-  //let totalEpisodes = await getAllEpisodesFetched();
   let completeEpisodes = allEpisodes.filter((episode) => {
-    if (episode.image !== null && episode.summary !== null)
-     {
+    if (episode.image !== null && episode.summary !== null) {
       return episode;
     }
-  })
-  
+  });
+
   allAvailableShows = getAllShows(); //all shows
   makePageForEpisodes(); // initial page for all episodes
-  createEpisodeCard(completeEpisodes.filter(episode=>episode.summary.length>10)); //single episode card for available / matched episode
+  createEpisodeCard(completeEpisodes); //single episode card for available / matched episode
   createOptions(completeEpisodes); //load episodes in select
   showOptions(allAvailableShows); //load shows in select
-
-  let arr = document.getElementById('shows')
-  //arr.click()
-  arr.dispatchEvent(new Event("change"));
-  //let names = localStorage.getItem("showname");
-  let jsarray = localStorage.getItem('showname')
-  let names = JSON.parse(jsarray);
- // console.log(names[0], "---");
-
+  let show = document.getElementById("shows");
+  show.click();
 }
 
 // header body and footer styling and data presentation
@@ -117,7 +85,6 @@ function makePageForEpisodes() {
   button.classList.add("button");
   button.innerText = "Show all Episodes";
   const buttonShows = document.createElement("a");
-  //buttonShows.style.display = "none";
   buttonShows.classList.add("button");
   buttonShows.innerText = "Present all Shows";
   buttonShows.href = "index.html";
@@ -155,7 +122,7 @@ function makePageForEpisodes() {
       }
     });
     allShowEpisodes = completeEpisodes;
-    // allShowEpisodes = await getAllEpisodesFetched()
+
     allEpisodes = allShowEpisodes.map((episode) => episode);
 
     const screen = document.getElementById("root");
@@ -170,8 +137,8 @@ function makePageForEpisodes() {
     createOptions(allEpisodes);
   });
   searchContainer.addEventListener("input", searchList); //event listener search
-  select.addEventListener("change", selectList); //event listener select
-  showNames.addEventListener("change", selectShows);
+  select.addEventListener("click", selectList); //event listener select
+  showNames.addEventListener("click", selectShows);
   showNames.addEventListener("click", selectShows);
 }
 
@@ -195,31 +162,23 @@ function createOptions(episodeList) {
     selectOptions.appendChild(option);
   });
 }
-
-function showOptions(episodeList) {
+//shows
+function showOptions(showList) {
   const selectOptions = document.getElementById("shows");
-  episodeList = episodeList.sort((a, b) => {
+  showList = showList.sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
     return 0;
   });
-  episodeList.forEach((episode) => {
+  showList.forEach((show) => {
     const option = document.createElement("option");
-    
 
-    option.value = `${episode.name}`;
+    option.value = `${show.name}`;
 
-    option.innerText = `${episode.name}`;
-    //  let names = localStorage.getItem("showname");
-    // console.log(names, "---");
-    
+    option.innerText = `${show.name}`;
+
     selectOptions.appendChild(option);
   });
-
-  // const element = document.getElementById('shows')
-  //   var x = do.selectedIndex;
-  //   var y = dcument.getElementById("mySelect").options;
-
 }
 //search event listener's call back function
 
@@ -277,17 +236,15 @@ async function selectList(e) {
 async function getAllEpisodesFetched() {
   let id;
   allAvailableShows = getAllShows();
-  let element = allAvailableShows.find((ele) => ele.name === userSelectedShow);
-  if (element !== undefined) {
-    id = element.id;
+  let shows = allAvailableShows.find((show) => show.name === userSelectedShow);
+  if (shows !== undefined) {
+    id = shows.id;
   } else {
-  //  let names = localStorage.getItem("showname");
- let jsarray = localStorage.getItem("showname");
- let names = JSON.parse(jsarray);
-    let element = allAvailableShows.find((ele) => ele.name === names[0]);
-    if (element !== undefined) {
-      id = element.id;
-      console.log(id);
+    let names = localStorage.getItem("showname");
+
+    let shows = allAvailableShows.find((show) => show.name === names);
+    if (shows !== undefined) {
+      id = shows.id;
     }
   }
 
@@ -300,23 +257,21 @@ async function getAllEpisodesFetched() {
 
 //new show select
 async function selectShows(e) {
- 
-  let test = localStorage.getItem('test');
-  if (test) {
-    userSelectedShow = test;
-    localStorage.removeItem('test')
-    const element = document.getElementById('shows')
-    const arr = Array.from(element)
-    console.log(arr)
-    arr.filter((ele, index) => {
-      if (ele.value === test) {
-        console.log(arr[index].value)
-        arr[index].setAttribute("selected", "selected");
+  let chosenShowName = localStorage.getItem("chosenShow");
+  if (chosenShowName) {
+    userSelectedShow = chosenShowName;
+    localStorage.removeItem("chosenShow");
+    const showFound = document.getElementById("shows");
+    const showGiven = Array.from(showFound);
+
+    showGiven.filter((show, index) => {
+      if (show.value === chosenShowName) {
+        showGiven[index].setAttribute("selected", "selected");
       }
-    })
-    
+    });
+  } else {
+    userSelectedShow = e.target.value;
   }
-  else { userSelectedShow = e.target.value; }
   const displayNumbers = document.getElementById("display");
   displayNumbers.innerText = "";
   const inputBox = document.getElementById("searchBox");
@@ -329,7 +284,6 @@ async function selectShows(e) {
     }
   });
   allShowEpisodes = completeEpisodes;
-  //allShowEpisodes = await getAllEpisodesFetched()
   allEpisodes = allShowEpisodes.map((episode) => episode);
   const screen = document.getElementById("root");
   const list = document.querySelector(".main");

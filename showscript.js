@@ -35,13 +35,11 @@ function showOptions(showList) {
 function searchList(e) {
   const screen = document.getElementById("root");
   const list = document.querySelector(".main");
-  document.body.removeChild(screen);
- 
+  document.body.removeChild(screen); 
   const displayNumbers = document.getElementById("display");
   const options = document.querySelector(".select");
   removeAllChildNodes(options);
   const userInput = e.target.value.toLowerCase();
-  
   allAvailableShows = getAllShows(); //all shows
   
 
@@ -64,14 +62,14 @@ function searchList(e) {
   createOptions(allMatchedShows);
 }
 //create dropdown for searched shows 
-function createOptions(episodeList) {
+function createOptions(showList) {
   const selectOptions = document.querySelector("select");
   const search = document.getElementById("searchBox");
   search.innerText = "";
-  episodeList.forEach((episode) => {
+  showList.forEach((show) => {
     const option = document.createElement("option");
-    option.innerHTML = episode.name;
-    option.value = episode.name;
+    option.innerHTML = show.name;
+    option.value = show.name;
     selectOptions.appendChild(option);
   });
 }
@@ -115,9 +113,9 @@ function makePageForShows() {
   footer.classList.add("footer");
   selectContainer.append(selectLabelOptions, showNames);
 
-  // document.body.appendChild(searchContainer); //select and search appended to the body
+
   document.body.insertBefore(selectContainer, rootElem);
-  showNames.addEventListener("change", setShow);
+  showNames.addEventListener("click", setShow);
   selectContainer.classList.add("selection");
  
   const site = document.createElement("p");
@@ -148,9 +146,9 @@ function setShow(e) {
   sel.appendChild(showName);  
   showName.href = "episodeindex.html";
   showName.target = "_self";
-  let jsarray = [e.target.value, e.target.value];
-  localStorage.setItem('test',e.target.value)
-  localStorage.setItem("showname", JSON.stringify(jsarray));
+  
+  localStorage.setItem('chosenShow',e.target.value)
+  localStorage.setItem("showname",e.target.value);
   showName.click();
 }
 

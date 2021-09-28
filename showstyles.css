@@ -21,6 +21,7 @@ body {
 h2 {
   padding-left: 10px;
   font-size: 4em;
+  text-align: center;
 }
 #root {
   margin: 0 auto;
@@ -227,4 +228,5 @@ img {
     align-items: left;
     width: 10rem;
   }
+  h2{text-align: left;}
 }

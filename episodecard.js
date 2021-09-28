@@ -48,7 +48,7 @@ export default function createEpisodeCard(allEpisodes) {
   const rootEl = document.getElementById("root");
 
   // targeting root element in the DOM
-  if (allEpisodes.summary !== "") {
+
     rootEl.appendChild(episodeList);
-  }
+  
 }

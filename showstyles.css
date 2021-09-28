@@ -208,7 +208,7 @@ img {
   .summary {
     width: 60rem;
     padding: 10px;
-
+     
     text-align: justify;
     display: flex;
     justify-content: center;
@@ -217,7 +217,7 @@ img {
   ul {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    
     list-style: none;
     align-items: center;
     

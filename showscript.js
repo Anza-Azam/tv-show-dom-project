@@ -1,90 +1,82 @@
+//importing shows and createShowCard from other modules
 import getAllShows from "./shows.js";
 import createShowCard from "./showcard.js";
+
+//all available shows and complete shows i.e without null data
 let allAvailableShows = [];
 let allCompleteShows = [];
+
+//setup
 function setup() {
   allAvailableShows = getAllShows(); //all shows
-  makePageForShows(); // initial page for all episodes
-  console.log(allAvailableShows);
-  allCompleteShows = allAvailableShows.filter((shows) => shows.image !== null);
-  createShowCard(allCompleteShows); //single episode card for available / matched episode
-  // createOptions(allAvailableShows); //load episodes in select
-  //showOptions(allAvailableShows); //load shows in select
+  makePageForShows(); // initial page for all shows
+  allCompleteShows = allAvailableShows.filter((shows) => shows.image !== null &&shows.summary!==null);
+  //show display
+  createShowCard(allCompleteShows);
+//dropdown of complete shows
   showOptions(allCompleteShows);
 }
-
-function showOptions(episodeList) {
+//function to display dropdown in alphabetical order
+function showOptions(showList) {
   const selectOptions = document.getElementById("shows");
-  episodeList = episodeList.sort((a, b) => {
+  showList = showList.sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
     return 0;
   });
-  episodeList.forEach((episode) => {
+  showList.forEach((show) => {
     const option = document.createElement("option");
-
-    option.value = `${episode.name}`;
-
-    option.innerText = `${episode.name}`;
+    option.value = `${show.name}`;
+    option.innerText = `${show.name}`;
     selectOptions.appendChild(option);
   });
 }
-
+//function for searching shows
 function searchList(e) {
   const screen = document.getElementById("root");
   const list = document.querySelector(".main");
   document.body.removeChild(screen);
-  //  const divs = document.querySelectorAll(".namediv");
-  //  removeAllChild(list);
-  //  const a= document.querySelectorAll('.a')
-  // divs.removeChild(a);
+ 
   const displayNumbers = document.getElementById("display");
   const options = document.querySelector(".select");
   removeAllChildNodes(options);
   const userInput = e.target.value.toLowerCase();
-  //let totalEpisodes = await getAllEpisodesFetched();
+  
   allAvailableShows = getAllShows(); //all shows
-  //makePageForShows(); // initial page for all episodes
-  //console.log(allAvailableShows);
-  // allCompleteShows = allAvailableShows.filter((shows) => shows.image !== null);
-  // let completeEpisodes = allCompleteShows.filter((episode) => {
-  //   if (episode.image !== null && episode.summary !== null) {
-  //     return episode;
-  //   }
-  // });
+  
 
-  const allMatchedEpisodes = allCompleteShows.filter((episode) => {
-    let a = episode.genres.filter((show) => show.toLowerCase() === userInput);
-    if (episode.image !== null && episode.summary !== null) {
+  const allMatchedShows= allCompleteShows.filter((shows) => {
+    let searchedItems=shows.genres.filter((show) => show.toLowerCase() === userInput);
+    if (shows.image !== null && shows.summary !== null) {
       if (
-        episode.name.toLowerCase().includes(userInput) ||
-        episode.summary.toLowerCase().includes(userInput) ||
-        a.length > 0
+        shows.name.toLowerCase().includes(userInput) ||
+        shows.summary.toLowerCase().includes(userInput) ||
+        searchedItems.length > 0
       ) {
-        console.log(episode.genres);
-        return episode;
+       
+        return shows;
       }
     }
   });
 
-  displayNumbers.innerText = `found ${allMatchedEpisodes.length} Shows`;
-  createShowCard(allMatchedEpisodes);
-  createOptions(allMatchedEpisodes);
+  displayNumbers.innerText = `found ${allMatchedShows.length} Shows`;
+  createShowCard(allMatchedShows);
+  createOptions(allMatchedShows);
 }
-
+//create dropdown for searched shows 
 function createOptions(episodeList) {
   const selectOptions = document.querySelector("select");
   const search = document.getElementById("searchBox");
   search.innerText = "";
   episodeList.forEach((episode) => {
     const option = document.createElement("option");
-
-    // showName.onclick = setShow();
     option.innerHTML = episode.name;
     option.value = episode.name;
     selectOptions.appendChild(option);
   });
 }
+
+//make initial page for display
 function makePageForShows() {
   const rootElem = document.getElementById("root"); //root div with ul
   const header = document.createElement("header");
@@ -148,21 +140,19 @@ function removeAllChildNodes(parent) {
   }
 }
 
+//function to switch from show listing to episode listing
 function setShow(e) {
   const showName = document.createElement("a");
   showName.display = "none";
   const sel = document.getElementById("sel");
-  sel.appendChild(showName);
-  //  showName.innerText = episode.name;
+  sel.appendChild(showName);  
   showName.href = "episodeindex.html";
   showName.target = "_self";
   let jsarray = [e.target.value, e.target.value];
   localStorage.setItem('test',e.target.value)
   localStorage.setItem("showname", JSON.stringify(jsarray));
-
-  // JSON.stringify(jsArray) converts the jsArray into a string which can be stored in sessionStorage
-
-  //localStorage.setItem("showname", e.target.value);
   showName.click();
 }
+
+
 window.onload = setup;

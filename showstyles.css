@@ -131,7 +131,7 @@ a {
   justify-content: center;
   justify-items: center;
 }
-
+li{list-style: none;font-weight: bolder;}
 .episode-card {
   display: flex;
   align-items: center;
@@ -218,8 +218,9 @@ img {
     display: flex;
     flex-direction: column;
     border: 2px solid black;
-    align-items: center;
     list-style: none;
+    align-items: center;
+    
     padding: 10px;
     width: 30%;
   }

@@ -10,10 +10,12 @@ let allCompleteShows = [];
 function setup() {
   allAvailableShows = getAllShows(); //all shows
   makePageForShows(); // initial page for all shows
-  allCompleteShows = allAvailableShows.filter((shows) => shows.image !== null &&shows.summary!==null);
+  allCompleteShows = allAvailableShows.filter(
+    (shows) => shows.image !== null && shows.summary !== null
+  );
   //show display
   createShowCard(allCompleteShows);
-//dropdown of complete shows
+  //dropdown of complete shows
   showOptions(allCompleteShows);
 }
 //function to display dropdown in alphabetical order
@@ -35,23 +37,23 @@ function showOptions(showList) {
 function searchList(e) {
   const screen = document.getElementById("root");
   const list = document.querySelector(".main");
-  document.body.removeChild(screen); 
+  document.body.removeChild(screen);
   const displayNumbers = document.getElementById("display");
   const options = document.querySelector(".select");
   removeAllChildNodes(options);
   const userInput = e.target.value.toLowerCase();
   allAvailableShows = getAllShows(); //all shows
-  
 
-  const allMatchedShows= allCompleteShows.filter((shows) => {
-    let searchedItems=shows.genres.filter((show) => show.toLowerCase() === userInput);
+  const allMatchedShows = allCompleteShows.filter((shows) => {
+    let searchedItems = shows.genres.filter(
+      (show) => show.toLowerCase() === userInput
+    );
     if (shows.image !== null && shows.summary !== null) {
       if (
         shows.name.toLowerCase().includes(userInput) ||
         shows.summary.toLowerCase().includes(userInput) ||
         searchedItems.length > 0
       ) {
-       
         return shows;
       }
     }
@@ -61,7 +63,7 @@ function searchList(e) {
   createShowCard(allMatchedShows);
   createOptions(allMatchedShows);
 }
-//create dropdown for searched shows 
+//create dropdown for searched shows
 function createOptions(showList) {
   const selectOptions = document.querySelector("select");
   const search = document.getElementById("searchBox");
@@ -96,12 +98,12 @@ function makePageForShows() {
   searchContainer.classList.add("inputs");
   searchContainer.append(searchLabel, search, displayNumbers);
   document.body.insertBefore(searchContainer, rootElem);
-  
+
   searchContainer.addEventListener("input", searchList);
   const selectLabelOptions = document.createElement("label");
-  
+
   const select = document.createElement("select");
-  
+
   const showNames = document.createElement("select");
   showNames.classList.add("select");
   showNames.id = "shows";
@@ -113,11 +115,10 @@ function makePageForShows() {
   footer.classList.add("footer");
   selectContainer.append(selectLabelOptions, showNames);
 
-
   document.body.insertBefore(selectContainer, rootElem);
   showNames.addEventListener("click", setShow);
   selectContainer.classList.add("selection");
- 
+
   const site = document.createElement("p");
   site.innerText = "@copyright";
   const link = document.createElement("a");
@@ -143,14 +144,13 @@ function setShow(e) {
   const showName = document.createElement("a");
   showName.display = "none";
   const sel = document.getElementById("sel");
-  sel.appendChild(showName);  
+  sel.appendChild(showName);
   showName.href = "episodeindex.html";
   showName.target = "_self";
-  
-  localStorage.setItem('chosenShow',e.target.value)
-  localStorage.setItem("showname",e.target.value);
+
+  localStorage.setItem("chosenShow", e.target.value);
+  localStorage.setItem("showname", e.target.value);
   showName.click();
 }
-
 
 window.onload = setup;

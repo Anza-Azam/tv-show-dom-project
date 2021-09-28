@@ -78,7 +78,7 @@ a {
   padding: 10px;
   font-family: 'Luckiest Guy', cursive;
   animation: pulse 5s infinite;
-  font-size: 3em;
+  font-size: 1.2em;
 }
 p{display:flex;flex-direction: column; text-align: justify; }
 @keyframes pulse {
@@ -241,5 +241,6 @@ body {
 	flex-direction: row;
 	flex-shrink:inherit;
 }
+.footer{font-size: 2.2em;}
   
 }

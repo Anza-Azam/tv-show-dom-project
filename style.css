@@ -32,7 +32,7 @@ a:active {
 a {
   padding-left: 10px;
 }
-/* header and main */
+/* header and main styles*/
 #root {
   margin: 0 auto;
   width: 80%;
@@ -203,7 +203,7 @@ li {
   font-size: 1rem;
 }
 
-/* footer */
+/* footer styles*/
 .footer {
   color: blue;
   display: flex;
@@ -218,7 +218,7 @@ li {
   font-size: 1.2em;
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
+/* Styles for Medium devices (landscape tablets, 768px and up) */
 
 @media only screen and (min-width: 768px) {
   * {
@@ -238,7 +238,6 @@ li {
     font-size: 6px;
     color: black;
   }
-
   .selection {
     flex-direction: row;
     flex-shrink: inherit;

@@ -84,7 +84,11 @@ function makePageForShows() {
   header.classList.add("header");
   const heading = document.createElement("h1");
   heading.innerText = "TV Shows";
-  header.appendChild(heading);
+  const img = document.createElement("img");
+  img.src = "favicon.ico";
+  img.classList.add("img");
+  img.alt = "tv logo";
+  header.append(img, heading);
   const searchContainer = document.createElement("div"); //search input text and display
   const displayNumbers = document.createElement("p");
   displayNumbers.id = "display";

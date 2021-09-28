@@ -124,7 +124,7 @@ function makePageForShows() {
   site.innerText = "@copyright";
   const link = document.createElement("a");
   link.id = "linkTag";
-  link.href = "https://www.tvmaze.com/api#licensing";
+  link.href = "https://tvmaze.com/api#licensing";
   link.target = "_blank";
   link.innerText = "TVMaze.com";
   //display footer

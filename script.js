@@ -42,7 +42,7 @@ async function setup() {
   createOptions(completeEpisodes); //load episodes in select
   showOptions(allAvailableShows); //load shows in select
   let show = document.getElementById("shows");
-  show.click();
+  show.dispatchEvent(new Event("change"));
 }
 
 // header body and footer styling and data presentation
@@ -142,7 +142,7 @@ function makePageForEpisodes() {
   });
   searchContainer.addEventListener("input", searchList); //event listener search
   select.addEventListener("click", selectList); //event listener select
-  showNames.addEventListener("click", selectShows);
+  showNames.addEventListener("change", selectShows);
   showNames.addEventListener("click", selectShows);
 }
 

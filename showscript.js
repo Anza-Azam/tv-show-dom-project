@@ -120,7 +120,7 @@ function makePageForShows() {
   selectContainer.append(selectLabelOptions, showNames);
 
   document.body.insertBefore(selectContainer, rootElem);
-  showNames.addEventListener("click", setShow);
+  showNames.addEventListener("change", setShow);
   selectContainer.classList.add("selection");
 
   const site = document.createElement("p");

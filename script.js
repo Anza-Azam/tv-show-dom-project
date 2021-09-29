@@ -219,6 +219,8 @@ async function selectList(e) {
   search.value = "";
   const button = document.querySelector(".button");
   button.style.display = "flex";
+  const displayNumbers = document.getElementById('display');
+  displayNumbers.innerText = '';
 
   const selected = allEpisodes.filter((episode) => {
     if (

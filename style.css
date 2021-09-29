@@ -44,7 +44,7 @@ a {
   align-items: flex-end;
   justify-content: center;
   text-align: center;
-  height:10%;
+  height: 10%;
   background-color: rgb(199, 185, 179);
   padding: 5px;
   font-family: "Luckiest Guy", cursive;
@@ -141,11 +141,11 @@ img {
   width: 100%;
   object-fit: cover;
 }
-.img{
-  display:flex;
-  width:50px;
-  margin-right:10px;
-  height:50px;
+.img {
+  display: flex;
+  width: 50px;
+  margin-right: 10px;
+  height: 50px;
 }
 .episode-card > h2 {
   border: 5px solid black;
@@ -220,7 +220,7 @@ li {
   padding: 10px;
   font-family: "Luckiest Guy", cursive;
   animation: pulse 5s infinite;
-  height:10%;
+  height: 10%;
   font-size: 1.2em;
 }
 
@@ -234,10 +234,11 @@ li {
   body {
     margin: 0 auto;
   }
-.header{font-size: 3em;
-align-items: flex-end;
-justify-items: flex-end;
-}
+  .header {
+    font-size: 3em;
+    align-items: flex-end;
+    justify-items: flex-end;
+  }
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -247,8 +248,10 @@ justify-items: flex-end;
     font-size: 6px;
     color: black;
   }
-  .img{height:80px;
-  width:80px;}
+  .img {
+    height: 80px;
+    width: 80px;
+  }
 
   .selection {
     flex-direction: row;
@@ -257,5 +260,4 @@ justify-items: flex-end;
   .footer {
     font-size: 2.2em;
   }
-  
 }

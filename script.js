@@ -53,11 +53,11 @@ function makePageForEpisodes() {
   header.classList.add("header");
   const heading = document.createElement("h1");
   heading.innerText = "TV Shows";
-  const img = document.createElement('img');
-  img.src = 'favicon.ico'
-  img.classList.add('img')
-  img.alt='tv logo'
-  header.append(img,heading);
+  const img = document.createElement("img");
+  img.src = "favicon.ico";
+  img.classList.add("img");
+  img.alt = "tv logo";
+  header.append(img, heading);
   const searchContainer = document.createElement("div"); //search input text and display
   const displayNumbers = document.createElement("p");
   displayNumbers.id = "display";
@@ -143,7 +143,6 @@ function makePageForEpisodes() {
   searchContainer.addEventListener("input", searchList); //event listener search
   select.addEventListener("change", selectList); //event listener select
   showNames.addEventListener("change", selectShows);
- 
 }
 
 // populate Episode options when episode are searched or all episodes if no search made

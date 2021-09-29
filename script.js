@@ -141,7 +141,7 @@ function makePageForEpisodes() {
     createOptions(allEpisodes);
   });
   searchContainer.addEventListener("input", searchList); //event listener search
-  select.addEventListener("click", selectList); //event listener select
+  select.addEventListener("change", selectList); //event listener select
   showNames.addEventListener("change", selectShows);
   showNames.addEventListener("click", selectShows);
 }

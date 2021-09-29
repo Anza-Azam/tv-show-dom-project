@@ -46,7 +46,7 @@ a {
   text-align: center;
   height:10%;
   background-color: rgb(199, 185, 179);
-  padding: 10px;
+  padding: 5px;
   font-family: "Luckiest Guy", cursive;
   animation: pulse 5s infinite;
   font-size: 1.5em;
@@ -235,7 +235,9 @@ li {
     margin: 0 auto;
   }
 .header{font-size: 3em;
-align-items: flex-end;}
+align-items: flex-end;
+justify-items: flex-end;
+}
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -245,6 +247,9 @@ align-items: flex-end;}
     font-size: 6px;
     color: black;
   }
+  .img{height:80px;
+  width:80px;}
+
   .selection {
     flex-direction: row;
     flex-shrink: inherit;

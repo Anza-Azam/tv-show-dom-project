@@ -231,4 +231,6 @@ align-items: flex-end;}
   .footer {
     font-size: 2.2em;
   }
+  .img{height:80px;
+  width:80px;}
 }

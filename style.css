@@ -1,3 +1,273 @@
+/*general styles*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 10px;
+  height: 100%;
+}
+/* link styles */
+a:link,
+a:visited {
+  color: rgb(3, 2, 2);
+  padding: 14px 25px;
+  text-align: center;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  background-color: rgb(192, 94, 94);
+}
+@viewport {
+  width: 100%; /*Sets the width of the actual viewport to the device width*/
+}
+a {
+  padding-left: 10px;
+}
+/* header and main styles*/
 #root {
-  color: red;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.header {
+  color: rgb(1, 1, 12);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  height: 10%;
+  background-color: rgb(199, 185, 179);
+  padding: 5px;
+  font-family: "Luckiest Guy", cursive;
+  animation: pulse 5s infinite;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2rem;
+  min-width: 200px;
+  min-height: 50px;
+  margin-top: 1rem;
+}
+.inputs > p {
+  padding-left: 20px;
+  font-size: 1rem;
+}
+p {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #9ca0a3;
+    color: rgb(12, 5, 2);
+  }
+
+  100% {
+    color: rgb(16, 56, 175);
+    background-color: #f1ecec;
+  }
+}
+.button {
+  padding: 14px 25px;
+  border-radius: 10px;
+  margin: 2px;
+  background-color: burlywood;
+  border: 2px black solid;
+  color: black;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.1rem;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.main {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-rows: auto;
+  grid-row-gap: 10px;
+  color: rgb(8, 0, 0);
+  margin: 0 auto;
+  justify-content: center;
+  justify-items: center;
+  font-size: 10px;
+  padding: 10px;
+}
+
+.select {
+  display: flex;
+  margin: 10px;
+  height: 50px;
+  flex-wrap: wrap;
+}
+.selection {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+}
+
+.episode-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  border: 5px solid rgba(20, 5, 5, 0.115);
+  border-radius: 10px;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.img {
+  display: flex;
+  width: 50px;
+  margin-right: 10px;
+  height: 50px;
+}
+.episode-card > h2 {
+  border: 5px solid black;
+  border-radius: 20px;
+  display: flex;
+  font-weight: bolder;
+  font-weight: bolder;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.label {
+  margin-right: 5px;
+  padding: 14px 25px;
+
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: rgb(133, 138, 73);
+  text-align: center;
+
+  display: flex;
+  flex-shrink: inherit;
+  color: black;
+}
+
+.episode-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+li {
+  list-style: none;
+}
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.inputs > #searchBox {
+  height: 4em;
+  margin: 5px 0px 5px 5px;
+  width: auto;
+}
+/* footer styles*/
+.footer {
+  color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(247, 243, 242);
+  padding: 10px;
+  font-family: "Luckiest Guy", cursive;
+  animation: pulse 5s infinite;
+  height: 10%;
+  font-size: 1.2em;
+}
+
+/* Styles for Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0 auto;
+  }
+  .header {
+    font-size: 3em;
+    align-items: flex-end;
+    justify-items: flex-end;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, 30%);
+    width: 100%;
+    grid-gap: 10px;
+    font-size: 6px;
+    color: black;
+  }
+  .inputs {
+    flex-direction: row;
+  }
+
+  .img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .selection {
+    flex-direction: row;
+    flex-shrink: inherit;
+  }
+  .footer {
+    font-size: 2.2em;
+  }
 }

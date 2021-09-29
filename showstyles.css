@@ -1,0 +1,250 @@
+/* general styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+@viewport {
+  width: 100%; /*Sets the width of the actual viewport to the device width*/
+}
+/* main styles */
+h2 {
+  padding-left: 10px;
+  font-size: 4em;
+  text-align: center;
+}
+#root {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.header {
+  color: rgb(1, 1, 12);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(199, 185, 179);
+  padding: 10px;
+  font-family: "Luckiest Guy", cursive;
+  animation: pulse 5s infinite;
+  font-size: 1.5em;
+  height: 10%;
+  width: 100%;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  min-width: 200px;
+  min-height: 50px;
+  margin-top: 1rem;
+}
+.inputs > p {
+  padding-left: 20px;
+  font-size: 1rem;
+}
+/* link styles */
+a:link,
+a:visited {
+  color: rgb(3, 2, 2);
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 2em;
+}
+a:hover,
+a:active {
+  background-color: rgb(192, 94, 94);
+}
+input {
+  height: 4em;
+  margin: 5px 0px 5px 5px;
+  width: auto;
+}
+/******other styles*********/
+
+p {
+  display: flex;
+  flex-direction: column;
+}
+.selection {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+}
+li {
+  list-style: none;
+  text-align: left;
+  font-weight: bolder;
+}
+
+.img {
+  display: flex;
+  width: 50px;
+  margin-right: 10px;
+  height: 50px;
+}
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.label {
+  margin-right: 5px;
+  padding: 14px 25px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: rgb(133, 138, 73);
+
+  display: flex;
+  flex-shrink: inherit;
+  color: black;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #9ca0a3;
+    color: rgb(12, 5, 2);
+  }
+
+  100% {
+    color: rgb(16, 56, 175);
+    background-color: #f1ecec;
+  }
+}
+.button {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: burlywood;
+  color: "red";
+}
+.summary {
+  display: flex;
+  text-justify: inherit;
+  text-align: justify;
+  justify-items: center;
+}
+section {
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.select {
+  display: flex;
+  margin: 10px;
+  height: 50px;
+  flex-wrap: wrap;
+}
+a {
+  font-size: 6em;
+}
+.footer {
+  color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(247, 243, 242);
+  padding: 10px;
+  font-family: "Luckiest Guy", cursive;
+  animation: pulse 5s infinite;
+  font-size: 1.2em;
+  height: 10%;
+}
+
+/*Styles for Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0 auto;
+  }
+  .header {
+    font-size: 3em;
+    align-items: flex-end;
+  }
+  section {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    flex: 1 1 0;
+    justify-content: space-around;
+    align-items: flex-start;
+    justify-items: center;
+  }
+  .selection {
+    flex-direction: row;
+    flex-shrink: inherit;
+  }
+  .summary {
+    width: 60rem;
+    padding: 10px;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 10px;
+    width: 30%;
+  }
+  .image-container {
+    display: flex;
+    border: 2px solid black;
+    justify-content: left;
+    align-items: left;
+    width: 10rem;
+  }
+  .inputs {
+    flex-direction: row;
+  }
+  h2 {
+    text-align: left;
+  }
+
+  .footer {
+    font-size: 2.2em;
+  }
+  .img {
+    height: 80px;
+    width: 80px;
+  }
+}

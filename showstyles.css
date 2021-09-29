@@ -44,6 +44,7 @@ h2 {
 }
 .inputs {
   display: flex;
+  flex-direction: column;
   justify-items: center;
   justify-content: center;
   font-size: 2rem;
@@ -67,7 +68,13 @@ a:visited {
 a:hover,
 a:active {
   background-color: rgb(192, 94, 94);
+
 }
+  input{
+   height: 4em;
+   margin:5px 0px 5px 5px;
+   width:auto;
+  }
 /******other styles*********/
 
 p {
@@ -226,10 +233,13 @@ a {
     justify-content: left;
     align-items: left;
     width: 10rem;
+  }.inputs{
+    flex-direction: row;
   }
   h2 {
     text-align: left;
   }
+
   .footer {
     font-size: 2.2em;
   }

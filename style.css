@@ -49,7 +49,7 @@ a {
   padding: 10px;
   font-family: "Luckiest Guy", cursive;
   animation: pulse 5s infinite;
-  font-size: 3em;
+  font-size: 1.5em;
   width: 100%;
 }
 
@@ -84,7 +84,6 @@ p {
 }
 .button {
   padding: 14px 25px;
-
   border-radius: 10px;
   margin: 2px;
   background-color: burlywood;
@@ -235,7 +234,7 @@ li {
   body {
     margin: 0 auto;
   }
-
+.header{font-size: 3em;}
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -252,4 +251,5 @@ li {
   .footer {
     font-size: 2.2em;
   }
+  
 }

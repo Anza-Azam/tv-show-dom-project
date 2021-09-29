@@ -297,7 +297,7 @@ displayNumbers.display='flex'
 
    
   allShowEpisodes = completeEpisodes;
-  displayNumbers.innerText = `displaying ${completeEpisodes.length} of ${completeEpisodes.length} Episodes`;
+  displayNumbers.innerText = `displaying ${completeEpisodes.length} of ${completeEpisodes.length} episodes`;
   allEpisodes = allShowEpisodes.map((episode) => episode);
   const screen = document.getElementById("root");
   const list = document.querySelector(".main");

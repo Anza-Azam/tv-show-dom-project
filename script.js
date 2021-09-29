@@ -143,7 +143,7 @@ function makePageForEpisodes() {
   searchContainer.addEventListener("input", searchList); //event listener search
   select.addEventListener("change", selectList); //event listener select
   showNames.addEventListener("change", selectShows);
-  showNames.addEventListener("click", selectShows);
+ 
 }
 
 // populate Episode options when episode are searched or all episodes if no search made

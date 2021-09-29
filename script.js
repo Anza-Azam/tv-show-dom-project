@@ -133,7 +133,7 @@ function makePageForEpisodes() {
     const list = document.querySelector(".main");
     screen.removeChild(list);
     const display = document.getElementById("display");
-    display.innerText = "";
+    display.innerText = `displaying ${completeEpisodes.length} of ${completeEpisodes.length} episodes`;
     const options = document.querySelector(".select");
     removeAllChildNodes(options);
 
@@ -231,6 +231,8 @@ async function selectList(e) {
     ) {
       return episode;
     }
+
+
   });
 
   const screen = document.getElementById("root");
@@ -278,17 +280,24 @@ async function selectShows(e) {
     userSelectedShow = e.target.value;
   }
   const displayNumbers = document.getElementById("display");
-  displayNumbers.innerText = "";
+  
   const inputBox = document.getElementById("searchBox");
   inputBox.value = "";
-
+displayNumbers.display='flex'
   let totalEpisodes = await getAllEpisodesFetched();
   let completeEpisodes = totalEpisodes.filter((episode) => {
     if (episode.image !== null && episode.summary !== null) {
+     
       return episode;
     }
+    
+    
   });
+
+
+   
   allShowEpisodes = completeEpisodes;
+  displayNumbers.innerText = `displaying ${completeEpisodes.length} of ${completeEpisodes.length} Episodes`;
   allEpisodes = allShowEpisodes.map((episode) => episode);
   const screen = document.getElementById("root");
   const list = document.querySelector(".main");

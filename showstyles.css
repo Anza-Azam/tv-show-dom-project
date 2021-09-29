@@ -68,13 +68,12 @@ a:visited {
 a:hover,
 a:active {
   background-color: rgb(192, 94, 94);
-
 }
-  input{
-   height: 4em;
-   margin:5px 0px 5px 5px;
-   width:auto;
-  }
+input {
+  height: 4em;
+  margin: 5px 0px 5px 5px;
+  width: auto;
+}
 /******other styles*********/
 
 p {
@@ -233,7 +232,8 @@ a {
     justify-content: left;
     align-items: left;
     width: 10rem;
-  }.inputs{
+  }
+  .inputs {
     flex-direction: row;
   }
   h2 {

@@ -61,7 +61,6 @@ a {
   min-width: 200px;
   min-height: 50px;
   margin-top: 1rem;
-
 }
 .inputs > p {
   padding-left: 20px;
@@ -211,11 +210,11 @@ li {
   font-size: 1rem;
 }
 
-  .inputs > #searchBox{
-   height: 4em;
-   margin:5px 0px 5px 5px;
-   width:auto;
-  }
+.inputs > #searchBox {
+  height: 4em;
+  margin: 5px 0px 5px 5px;
+  width: auto;
+}
 /* footer styles*/
 .footer {
   color: blue;
@@ -255,7 +254,7 @@ li {
     font-size: 6px;
     color: black;
   }
-  .inputs{
+  .inputs {
     flex-direction: row;
   }
 

@@ -31,7 +31,7 @@ h2 {
 .header {
   color: rgb(1, 1, 12);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
   background-color: rgb(199, 185, 179);
@@ -91,9 +91,9 @@ li {
 
 .img{
   display:flex;
-  width:80px;
+  width:50px;
   margin-right:10px;
-  height:80px;
+  height:50px;
 }
 img {
   height: 100%;
@@ -188,7 +188,8 @@ a {
   body {
     margin: 0 auto;
   }
-.header{font-size:3em;}
+.header{font-size:3em;
+align-items: flex-end;}
   section {
     display: flex;
     flex-direction: row;

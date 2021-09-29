@@ -41,7 +41,7 @@ a {
 .header {
   color: rgb(1, 1, 12);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
   height:10%;
@@ -143,9 +143,9 @@ img {
 }
 .img{
   display:flex;
-  width:80px;
+  width:50px;
   margin-right:10px;
-  height:80px;
+  height:50px;
 }
 .episode-card > h2 {
   border: 5px solid black;
@@ -234,7 +234,8 @@ li {
   body {
     margin: 0 auto;
   }
-.header{font-size: 3em;}
+.header{font-size: 3em;
+align-items: flex-end;}
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
